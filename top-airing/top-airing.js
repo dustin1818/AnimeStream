@@ -3,7 +3,7 @@
 const next = document.getElementById("next");
 const prev = document.getElementById("prev");
 const card_layout = document.getElementById("card_wrapper");
-const url = "https://api.consumet.org/anime/gogoanime/recent-episodes?page%5Blimit%5D=20";
+const url = "https://api.consumet.org/anime/gogoanime/top-airing";
 let page = 1;
 const fetchAnime = async () => {
   try {
