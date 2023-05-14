@@ -1,0 +1,59 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&display=swap");
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+  scroll-behavior: smooth;
+}
+
+.anime_div,.episode_div {
+  padding: 40px;
+}
+
+.main_div {
+  display: flex;
+}
+
+.title {
+  color: hsl(217, 71%, 53%) !important;
+}
+
+.left_div {
+  margin-right: 50px;
+}
+
+.right_div {
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.type_container,
+.description_container,
+.genre_container,
+.released_container,
+.language_container,
+.totalEp_container,
+.status_container {
+  display: flex;
+  flex-wrap: wrap;
+}
+.type_container p:first-of-type,
+.description_container p:first-of-type,
+.genre_container p:first-of-type,
+.released_container p:first-of-type,
+.language_container p:first-of-type,
+.totalEp_container p:first-of-type,
+.status_container p:first-of-type {
+  margin-right: 5px;
+  color: hsl(217, 71%, 53%);
+}
+
+.list-ep{
+    display: flex;
+    gap:15px;
+    flex-wrap: wrap;
+}

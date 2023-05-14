@@ -3,7 +3,7 @@
 const next = document.getElementById("next");
 const prev = document.getElementById("prev");
 const card_layout = document.getElementById("card_wrapper");
-const url = "https://api.consumet.org/anime/gogoanime/recent-episodes?page%5Blimit%5D=20";
+const url = "https://api.consumet.org/anime/gogoanime/recent-episodes";
 let page = 1;
 const fetchAnime = async () => {
   try {
@@ -64,6 +64,8 @@ prev.addEventListener("click", (e) => {
   }
 });
 
-const getCard = (e) => {
-  console.log(e)
+const getCard = (anime) => {
+  console.log(anime);
+  localStorage.setItem('anime-info', JSON.stringify(anime));
+  window.location.href = "./anime-details/anime-details.html";
 }
