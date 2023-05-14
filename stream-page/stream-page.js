@@ -2,6 +2,11 @@ const player = videojs("hls-example");
 const ep_id = JSON.parse(localStorage.getItem("ep_id"));
 console.log(ep_id);
 
+
+const goBack = () => {
+    window.location.href = "../anime-details/anime-details.html";
+}
+
 const getAnimeVideoEp = async () => {
     let episodeName = ep_id.id;
     let streamSelections = "vidstreaming";

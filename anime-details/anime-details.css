@@ -14,6 +14,7 @@
 
 .main_div {
   display: flex;
+  flex-wrap: wrap;
 }
 
 .title {
@@ -56,4 +57,20 @@
     display: flex;
     gap:15px;
     flex-wrap: wrap;
+}
+
+@media screen and (max-width:450px) {
+
+  .anime_div,.episode_div {
+    padding: 20px;
+  }
+
+  .left_div {
+    margin-right: 0px;
+    width: 100%;
+  }
+  
+  .right_div {
+    width: 100%;
+  }
 }

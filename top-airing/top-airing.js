@@ -7,12 +7,12 @@ const url = "https://api.consumet.org/anime/gogoanime/top-airing";
 let page = 1;
 const fetchAnime = async () => {
   try {
-   const data = await axios.get(`${url}?page=${page}`);
+    const data = await axios.get(`${url}?page=${page}`);
     console.log(data.data, page);
     const { results } = data.data;
     console.log(results);
     results.forEach((anime) => {
-      const checkAnimeTitle = anime.title ? `${anime.title}` : `${anime.id}`
+      const checkAnimeTitle = anime.title ? `${anime.title}` : `${anime.id}`;
       const card = document.createElement("div");
       card.classList.add("card");
       const card_image = document.createElement("div");
@@ -36,10 +36,10 @@ const fetchAnime = async () => {
       p.innerText = checkAnimeTitle;
       notification.appendChild(p);
       container.appendChild(notification);
-      card.append(card_image,container);
+      card.append(card_image, container);
       card.addEventListener("click", () => {
         getCard(anime);
-      })
+      });
       card_layout.appendChild(card);
     });
   } catch (err) {
@@ -55,15 +55,17 @@ next.addEventListener("click", () => {
   fetchAnime();
 });
 prev.addEventListener("click", (e) => {
-  if(page === 1) {
+  if (page === 1) {
     e.preventDefault();
-  }else{
+  } else {
     page -= 1;
     card_layout.innerHTML = " ";
     fetchAnime();
   }
 });
 
-const getCard = (e) => {
-  console.log(e)
-}
+const getCard = (anime) => {
+  console.log(anime);
+  localStorage.setItem("anime-info", JSON.stringify(anime));
+  window.location.href = "../anime-details/anime-details.html";
+};
