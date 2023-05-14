@@ -6,6 +6,7 @@
   box-sizing: border-box;
   font-family: "Poppins", sans-serif;
   scroll-behavior: smooth;
+  text-decoration: none;
 }
 
 main {
@@ -42,10 +43,46 @@ main {
   object-position: top center;
 }
 
+.image.is-4by3 {
+  padding-top: 100% !important;
+}
+
 .container.is-fullhd {
   position: absolute;
   width: 100%;
   bottom: 0;
+}
+
+.nav-mobile{
+  display: none;
+}
+
+.nav-mobile-active {
+  display: block;
+  position: fixed;
+  height: 100vh;
+  z-index: 1;
+  background: #485fc7;
+  width: 100%;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+}
+
+.nav-mobile-active a {
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 40px;
+}
+
+.navbar-burger{
+  z-index: 2;
 }
 
 @media screen and (max-width: 450px) {

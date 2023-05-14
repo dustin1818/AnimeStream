@@ -1,6 +1,15 @@
 const anime_info = JSON.parse(localStorage.getItem("anime-info"));
 const anime_div = document.getElementById("anime_div");
 const episode_div = document.getElementById("list-ep");
+
+const nav = document.getElementById('nav');
+const nav_mobile = document.querySelector('.nav-mobile');
+nav.addEventListener('click', () => {
+  nav.classList.toggle('is-active');
+  nav_mobile.classList.toggle('nav-mobile-active');
+})
+
+
 const getAnimeInfo = async () => {
   try {
     const data = await axios.get(
@@ -24,6 +33,7 @@ const getAnimeInfo = async () => {
       //title
       const title = document.createElement("h3");
       title.className = "title";
+      title.classList.add('title2');
       const checkAnimeTitle = anime_data.title ? `${anime_data.title}`: `${anime_data.id}`;
       title.innerText = checkAnimeTitle;
       //type

@@ -69,3 +69,10 @@ const getCard = (anime) => {
   localStorage.setItem('anime-info', JSON.stringify(anime));
   window.location.href = "./anime-details/anime-details.html";
 }
+
+const nav = document.getElementById('nav');
+const nav_mobile = document.querySelector('.nav-mobile');
+nav.addEventListener('click', () => {
+  nav.classList.toggle('is-active');
+  nav_mobile.classList.toggle('nav-mobile-active');
+})

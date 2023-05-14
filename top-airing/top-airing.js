@@ -5,6 +5,14 @@ const prev = document.getElementById("prev");
 const card_layout = document.getElementById("card_wrapper");
 const url = "https://api.consumet.org/anime/gogoanime/top-airing";
 let page = 1;
+
+const nav = document.getElementById('nav');
+const nav_mobile = document.querySelector('.nav-mobile');
+nav.addEventListener('click', () => {
+  nav.classList.toggle('is-active');
+  nav_mobile.classList.toggle('nav-mobile-active');
+})
+
 const fetchAnime = async () => {
   try {
     const data = await axios.get(`${url}?page=${page}`);

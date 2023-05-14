@@ -8,7 +8,40 @@
   scroll-behavior: smooth;
 }
 
-.anime_div,.episode_div {
+.nav-mobile {
+  display: none;
+}
+
+.nav-mobile-active {
+  display: block;
+  position: fixed;
+  height: 100vh;
+  z-index: 1;
+  background: #485fc7;
+  width: 100%;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+}
+
+.nav-mobile-active a {
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 40px;
+}
+
+.navbar-burger {
+  z-index: 2;
+}
+
+.anime_div,
+.episode_div {
   padding: 40px;
 }
 
@@ -18,7 +51,7 @@
 }
 
 .title {
-  color: hsl(217, 71%, 53%) !important;
+  color: #485fc7 !important;
 }
 
 .left_div {
@@ -50,18 +83,22 @@
 .totalEp_container p:first-of-type,
 .status_container p:first-of-type {
   margin-right: 5px;
-  color: hsl(217, 71%, 53%);
+  color: #485fc7;
 }
 
-.list-ep{
-    display: flex;
-    gap:15px;
-    flex-wrap: wrap;
+.list-ep {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
 }
 
-@media screen and (max-width:450px) {
+@media screen and (max-width: 450px) {
+  .title2 {
+    margin-top: 30px;
+  }
 
-  .anime_div,.episode_div {
+  .anime_div,
+  .episode_div {
     padding: 20px;
   }
 
@@ -69,7 +106,7 @@
     margin-right: 0px;
     width: 100%;
   }
-  
+
   .right_div {
     width: 100%;
   }
