@@ -21,7 +21,8 @@
         </p>
       </a>
 
-      <a role="button" id="nav" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample" >
+      <a role="button" id="nav" class="navbar-burger" aria-label="menu" aria-expanded="false"
+        data-target="navbarBasicExample">
         <span aria-hidden="true"></span>
         <span aria-hidden="true"></span>
         <span aria-hidden="true"></span>
@@ -31,8 +32,8 @@
         <a href="../index.html">
           Home
         </a>
-  
-        <a href="../top-airing/top-airing.html" >
+
+        <a href="../top-airing/top-airing.html">
           Top Airing
         </a>
       </div>
@@ -87,19 +88,27 @@
   </nav>
 
   <main>
+    <div class="loader-container">
+      <div class="three-body">
+        <div class="three-body__dot"></div>
+        <div class="three-body__dot"></div>
+        <div class="three-body__dot"></div>
+      </div>
+    </div>
 
     <div id="anime_div" class="anime_div">
     </div>
 
     <div id="episode_div" class="episode_div">
-      <h3 class="title">Episode List</h3>
-      <hr>
+      <h3 id="ep-header" class="title">Episode List</h3>
+      <hr id="hr">
+
       <div id="list-ep" class="list-ep"></div>
     </div>
   </main>
 
 
->
+  >
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   <script src="./anime-details.js"></script>
 </body>

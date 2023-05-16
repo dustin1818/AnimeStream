@@ -13,12 +13,24 @@ nav.addEventListener('click', () => {
   nav_mobile.classList.toggle('nav-mobile-active');
 })
 
+
+const loader_container = document.querySelector(".loader-container");
+const loader = document.querySelector(".three-body");
+loader_container.style.display = "flex";
+loader.style.display = "inline-block";
+
+const btn_container = document.querySelector(".btn-container");
+btn_container.style.display = "none";
+
 const fetchAnime = async () => {
   try {
     const data = await axios.get(`${url}?page=${page}`);
     console.log(data.data, page);
     const { results } = data.data;
     console.log(results);
+    loader_container.style.display = "none";
+    loader.style.display = "none";
+    btn_container.style.display = "flex";
     results.forEach((anime) => {
       const checkAnimeTitle = anime.title ? `${anime.title}` : `${anime.id}`;
       const card = document.createElement("div");
@@ -51,6 +63,9 @@ const fetchAnime = async () => {
       card_layout.appendChild(card);
     });
   } catch (err) {
+    loader_container.style.display = "none";
+    loader.style.display = "none";
+    btn_container.style.display = "none";
     throw new Error(err.message);
   }
 };
@@ -58,6 +73,8 @@ const fetchAnime = async () => {
 fetchAnime();
 
 next.addEventListener("click", () => {
+  loader_container.style.display = "flex";
+  loader.style.display = "inline-block";
   page += 1;
   card_layout.innerHTML = " ";
   fetchAnime();
@@ -66,6 +83,8 @@ prev.addEventListener("click", (e) => {
   if (page === 1) {
     e.preventDefault();
   } else {
+    loader_container.style.display = "flex";
+    loader.style.display = "inline-block";
     page -= 1;
     card_layout.innerHTML = " ";
     fetchAnime();

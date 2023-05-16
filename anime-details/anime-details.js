@@ -9,6 +9,16 @@ nav.addEventListener("click", () => {
   nav_mobile.classList.toggle("nav-mobile-active");
 })
 
+const loader_container = document.querySelector(".loader-container");
+const loader = document.querySelector(".three-body");
+loader_container.style.display = "flex";
+loader.style.display = "inline-block";
+
+const ep_header = document.getElementById("ep-header");
+ep_header.style.display = "none";
+
+const hr = document.getElementById("hr");
+hr.style.display = "none";
 
 const getAnimeInfo = async () => {
   try {
@@ -17,6 +27,10 @@ const getAnimeInfo = async () => {
     );
     const anime_data = data.data;
     console.log(anime_data);
+    loader_container.style.display = "none";
+    loader.style.display = "none";
+    ep_header.style.display = "flex";
+    hr.style.display = "flex";
       const main_div = document.createElement("div");
       main_div.className = "main_div";
       //left-div
@@ -61,8 +75,8 @@ const getAnimeInfo = async () => {
       category.classList.add("category");
       anime_data.genres.map( genre => {
         let genre_subtext =  document.createElement("p");
-        genre_subtext.classList.add('button')
-        genre_subtext.classList.add('is-link')
+        genre_subtext.classList.add("button")
+        genre_subtext.classList.add("is-link")
         genre_subtext.append(genre)
         console.log(genre_subtext);
         category.append(genre_subtext);
@@ -122,6 +136,7 @@ const getAnimeInfo = async () => {
         episode_div.append(btn);
       }
   } catch (e) {
+    loader.style.display = "none";
     throw new Error(e.message);
   }
 };
