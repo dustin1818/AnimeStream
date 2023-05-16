@@ -2,11 +2,11 @@ const anime_info = JSON.parse(localStorage.getItem("anime-info"));
 const anime_div = document.getElementById("anime_div");
 const episode_div = document.getElementById("list-ep");
 
-const nav = document.getElementById('nav');
-const nav_mobile = document.querySelector('.nav-mobile');
-nav.addEventListener('click', () => {
-  nav.classList.toggle('is-active');
-  nav_mobile.classList.toggle('nav-mobile-active');
+const nav = document.getElementById("nav");
+const nav_mobile = document.querySelector(".nav-mobile");
+nav.addEventListener("click", () => {
+  nav.classList.toggle("is-active");
+  nav_mobile.classList.toggle("nav-mobile-active");
 })
 
 
@@ -33,7 +33,7 @@ const getAnimeInfo = async () => {
       //title
       const title = document.createElement("h3");
       title.className = "title";
-      title.classList.add('title2');
+      title.classList.add("title2");
       const checkAnimeTitle = anime_data.title ? `${anime_data.title}`: `${anime_data.id}`;
       title.innerText = checkAnimeTitle;
       //type
@@ -57,9 +57,19 @@ const getAnimeInfo = async () => {
       genre_container.className = "genre_container";
       const genre_text = document.createElement("p");
       genre_text.innerText = "Genre:";
-      const genre_subtext =  document.createElement("p");
-      genre_subtext.innerText = anime_data.genres;
-      genre_container.append(genre_text,genre_subtext);
+      let category = document.createElement("div");
+      category.classList.add("category");
+      anime_data.genres.map( genre => {
+        let genre_subtext =  document.createElement("p");
+        genre_subtext.classList.add('button')
+        genre_subtext.classList.add('is-link')
+        genre_subtext.append(genre)
+        console.log(genre_subtext);
+        category.append(genre_subtext);
+      })
+
+      genre_container.append(genre_text, category)
+
       //Released
       const released_container = document.createElement("div");
       released_container.className = "released_container";
