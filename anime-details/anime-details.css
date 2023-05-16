@@ -60,6 +60,7 @@
 .anime-img{
   height: 650px;
   object-fit: cover;
+  
 }
 
 .right_div {
@@ -125,6 +126,7 @@
 
   .anime-img{
     height: 450px;
+    margin: auto;
   }
 
   .right_div {
