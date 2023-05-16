@@ -204,12 +204,16 @@ main {
 }
 
 @media screen and (max-width: 450px) {
+  .navbar-item p {
+    font-size: 28px;
+  }
+
   main {
     padding: 20px;
   }
 
   .btn-container {
-    justify-content: start;
+    justify-content: center;
   }
 
   .card_wrapper {

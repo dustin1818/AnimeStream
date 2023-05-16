@@ -263,12 +263,23 @@ main {
 }
 
 @media screen and (max-width: 450px) {
+
+  .navbar-item p {
+    font-size: 28px;
+  }
+
   main {
     padding: 20px;
   }
 
+  .upper-container{
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+
   .btn-container {
-    justify-content: end;
+    justify-content: center;
   }
 
   .card_wrapper {
