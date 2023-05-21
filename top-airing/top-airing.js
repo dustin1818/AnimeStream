@@ -3,7 +3,7 @@
 const next = document.getElementById("next");
 const prev = document.getElementById("prev");
 const card_layout = document.getElementById("card_wrapper");
-const url = "https://api.consumet.org/anime/gogoanime/top-airing";
+const url = "https://c.delusionz.xyz/anime/gogoanime/top-airing";
 let page = 1;
 
 const nav = document.getElementById('nav');

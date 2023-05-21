@@ -1,4 +1,5 @@
 const anime_info = JSON.parse(localStorage.getItem("anime-info"));
+console.log(anime_info);
 const anime_div = document.getElementById("anime_div");
 const episode_div = document.getElementById("list-ep");
 
@@ -23,7 +24,7 @@ hr.style.display = "none";
 const getAnimeInfo = async () => {
   try {
     const data = await axios.get(
-      `https://api.consumet.org/anime/gogoanime/info/${anime_info.id}`
+      `https://c.delusionz.xyz/anime/gogoanime/info/${anime_info.id}`
     );
     const anime_data = data.data;
     console.log(anime_data);
@@ -66,32 +67,6 @@ const getAnimeInfo = async () => {
       const description_subtext =  document.createElement("p");
       description_subtext.innerText = anime_data.description;
       description_container.append(description_text,description_subtext);
-      //Genre
-      const genre_container = document.createElement("div");
-      genre_container.className = "genre_container";
-      const genre_text = document.createElement("p");
-      genre_text.innerText = "Genre:";
-      let category = document.createElement("div");
-      category.classList.add("category");
-      anime_data.genres.map( genre => {
-        let genre_subtext =  document.createElement("p");
-        genre_subtext.classList.add("button")
-        genre_subtext.classList.add("is-link")
-        genre_subtext.append(genre)
-        console.log(genre_subtext);
-        category.append(genre_subtext);
-      })
-
-      genre_container.append(genre_text, category)
-
-      //Released
-      const released_container = document.createElement("div");
-      released_container.className = "released_container";
-      const released_text = document.createElement("p");
-      released_text.innerText = "Released:";
-      const released_subtext =  document.createElement("p");
-      released_subtext.innerText = anime_data.releaseDate;
-      released_container.append(released_text,released_subtext);
       //Sub/Dub
       const language_container = document.createElement("div");
       language_container.className = "language_container";
@@ -108,16 +83,8 @@ const getAnimeInfo = async () => {
       const totalEp_subtext =  document.createElement("p");
       totalEp_subtext.innerText = anime_data.totalEpisodes;
       totalEp_container.append(totalEp_text,totalEp_subtext);
-      //Status
-      const status_container = document.createElement("div");
-      status_container.className = "status_container";
-      const status_text = document.createElement("p");
-      status_text.innerText = "Status:";
-      const status_subtext =  document.createElement("p");
-      status_subtext.innerText = anime_data.status;
-      status_container.append(status_text,status_subtext);
      // combine containers inside right div
-      right_div.append(title,type_container,description_container,genre_container,released_container,language_container,totalEp_container,status_container);
+      right_div.append(title,type_container,description_container,language_container,totalEp_container);
       //combine left and right div to main div
       main_div.append(left_div,right_div);
       anime_div.append(main_div);

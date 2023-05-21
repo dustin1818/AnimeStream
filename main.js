@@ -5,7 +5,7 @@ const prev = document.getElementById("prev");
 const next2 = document.getElementById("next2");
 const prev2 = document.getElementById("prev2");
 const card_layout = document.getElementById("card_wrapper");
-const url = "https://api.consumet.org/anime/gogoanime/recent-episodes";
+const url = "https://c.delusionz.xyz/anime/gogoanime/recent-episodes";
 let page = 1;
 
 const nav = document.getElementById("nav");
@@ -103,7 +103,7 @@ const getCard = (anime) => {
 const searchAnimeData = async (inputData) => {
   try {
     const getAnimeResult = await axios.get(
-      `https://api.consumet.org/anime/gogoanime/${inputData}?page=${page}`
+      `https://c.delusionz.xyz/anime/gogoanime/${inputData}?page=${page}`
     );
 
     console.log(getAnimeResult.data, `This is page ${page}`);
