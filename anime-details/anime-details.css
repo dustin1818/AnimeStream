@@ -231,6 +231,10 @@ align-items: center;
 }
 
 @media screen and (max-width: 450px) {
+  .navbar-item p {
+    font-size: 28px;
+  }
+
   .title2 {
     margin-top: 30px;
   }
