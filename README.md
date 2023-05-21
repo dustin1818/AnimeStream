@@ -5,6 +5,7 @@
 - personal project
 
 Things to Do
+- add 404 page if enter button is pressed and no data to be fetched
 - add icon for website
 - update title tab for each html page
 - add quality tab for each video
