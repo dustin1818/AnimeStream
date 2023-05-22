@@ -126,4 +126,8 @@ body{
     flex-direction: row;
     flex-wrap: wrap;
   }
+
+  .quality-container h3,.server-container h3{
+    width: 100%;
+  }
 }
