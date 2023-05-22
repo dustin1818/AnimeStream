@@ -1,10 +1,10 @@
-<<<<<<< HEAD
 # AnimeStream 
 - api from consumet.org(old) | c.delusionz.xyz (new)
 - used bulma as css framework
 - personal project
 
 Things to Do
+- fix anime length video for videojs when playing a video
 - add 404 page if enter button is pressed and no data to be fetched
 - add icon for website
 - update title tab for each html page
