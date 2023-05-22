@@ -8,8 +8,7 @@
   <title>Document</title>
   <link rel="stylesheet" href="./stream-page.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
-  <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
-
+  <link href="https://vjs.zencdn.net/8.3.0/video-js.css" rel="stylesheet" />
 </head>
 
 <body>
@@ -88,37 +87,37 @@
   </nav>
 
   <div class="video-container">
-    <button onclick="goBack()" class="button is-link is-outlined">Go Back</button>
-    <!-- <video id='my-video' class="video-js vjs-default-skin" controls preload="auto">
+    <button id="btn-back" onclick="goBack()" class="button is-link is-outlined">Go Back</button>
+     <video id='my-video' class="video-js vjs-default-skin" controls preload="auto">
        <source type="application/x-mpegURL" src=""> 
        <p class="vjs-no-js">
         To view this video please enable JavaScript, and consider upgrading to a web browser that
         <a href="https://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a>
       </p> 
-    </video> -->
+    </video> 
 
     <div class="lower-container">
-      <!-- <div class="quality-container">
+      <div class="quality-container">
+        <h3 style="margin-bottom: 20px;">Update video quality here</h3>
         <button id="360p" class="button is-link is-outlined">360p</button>
         <button id="480p" class="button is-link is-outlined">480p</button>
         <button id="720p" class="button is-link is-outlined">720p</button>
         <button id="1080p" class="button is-link is-outlined">1080p</button>
-      </div>  -->
+        <button id="auto" class="button is-link is-outlined">default</button>
+      </div> 
 
       <div class="server-container">
-        <h3>Choose from these streaming services to watch the episode!</h3>
+        <h3 style="margin-bottom: 20px;">Update streaming services here</h3>
         <button id="Vidstreaming" class="button is-link is-outlined">Vidstreaming</button>
         <button id="GogoServer" class="button is-link is-outlined">Gogo Server</button>
         <button id="Streamsb" class="button is-link is-outlined">Streamsb</button>
-        <button id="Xstreamcdn" class="button is-link is-outlined">Xstreamcdn</button>
-        <button id="Mp4Upload" class="button is-link is-outlined">Mp4Upload</button>
-        <button id="Doodstream" class="button is-link is-outlined">Doodstream</button>
+
       </div>
     </div>
   </div>
 
   <!-- Javascript File  -->
-  <!-- <script src="https://vjs.zencdn.net/8.3.0/video.min.js"></script> -->
+  <script src="https://vjs.zencdn.net/8.3.0/video.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   <script src="./stream-page.js"></script>
 </body>
