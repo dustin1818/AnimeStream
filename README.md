@@ -11,5 +11,5 @@ Things to Do
 
 
 Bugs
-- video streaming link for api temp down
+- consumet api is now working, but unstable
 
