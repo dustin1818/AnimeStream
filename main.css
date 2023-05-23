@@ -245,7 +245,7 @@ main {
 }
 
 .image.is-4by3 {
-  padding-top: 100% !important;
+  padding-top: 130% !important;
   height: 100%;
   width: 100%;
   overflow: hidden;
@@ -262,6 +262,10 @@ main {
   bottom: 0;
 }
 
+.notification{
+  border-radius: 0 !important;
+}
+
 @media screen and (max-width:1020px) {
   .navbar.is-link {
     position: fixed;
@@ -272,6 +276,20 @@ main {
 
   .upper-container{
     margin-top: 75px;
+  }
+
+  .card_wrapper{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap: 20px;
+  }
+
+  .image.is-4by3{
+    padding-top: 147% !important;
+  }
+
+  .notification.is-link{
+    padding: 10px;
   }
 }
 
@@ -295,7 +313,17 @@ main {
     justify-content: center;
   }
 
-  .card_wrapper {
-    grid-template-columns: auto;
+  .card_wrapper{
+    gap: 15px;
+  }
+
+  .image.is-4by3{
+    padding-top: 160% !important;
+  }
+
+  .notification{
+    > p{
+      font-size: 11px;
+    }
   }
 }

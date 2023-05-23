@@ -107,18 +107,9 @@ body {
   gap: 10px;
 }
 
-@media screen and (max-width:1020px) {
-  .navbar,.navbar.is-link {
-    position: fixed;
-    right: 0;
-    z-index: 30;
-    width: 100%;
-  }
-}
-
-@media screen and (max-width: 900px) {
+@media screen and (max-width: 1020px) {
   .video-container {
-    height: 85vh;
+    height: 100%;
     padding: 20px;
   }
 
@@ -153,7 +144,11 @@ body {
 
   .video-container{
     height: 100%;
-    margin-top: 100px;
+  }
+
+  .video-js {
+    min-height: auto;
+    height: 189px;
   }
 
 }

@@ -212,11 +212,15 @@ align-items: center;
   color: #485fc7;
 }
 
+.genre_container{
+  margin: 5px 0;
+}
+
 .category{
   display: flex;
   flex-wrap: wrap;
   width: 100%;
-  gap: 20px;
+  gap: 8px;
   margin-top: 10px;
 }
 
@@ -232,12 +236,15 @@ align-items: center;
 
 
 @media screen and (max-width:1020px) {
-  .navbar.is-link {
-    position: fixed;
-    right: 0;
-    z-index: 30;
+  .right_div {
     width: 100%;
+    margin-top: 20px;
   }
+
+  .episode_div{
+    padding-top: 0;
+  }
+
 }
 
 @media screen and (max-width: 450px) {
@@ -247,16 +254,19 @@ align-items: center;
 
   .title2 {
     margin-top: 30px;
+    font-size: 30px !important;
   }
 
   .anime_div,
   .episode_div {
-    padding: 20px;
+    padding: 50px 20px;
   }
 
-  .main_div{
-    margin-top: 100px;
+  .episode_div{
+    padding-top: 0;
   }
+
+
 
   .left_div {
     margin-right: 0px;
@@ -272,7 +282,4 @@ align-items: center;
     height: 480px;
   }
 
-  .right_div {
-    width: 100%;
-  }
 }
