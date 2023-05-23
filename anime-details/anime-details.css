@@ -255,18 +255,17 @@ align-items: center;
   .title2 {
     margin-top: 30px;
     font-size: 30px !important;
+    margin-bottom: 15px !important;
   }
 
   .anime_div,
   .episode_div {
-    padding: 50px 20px;
+    padding: 40px 20px;
   }
 
   .episode_div{
     padding-top: 0;
   }
-
-
 
   .left_div {
     margin-right: 0px;
@@ -274,6 +273,10 @@ align-items: center;
     display: flex;
     justify-content: center;
     align-items: center;
+  }
+
+  .right_div{
+    margin-top: 0;
   }
 
   .anime-img{
