@@ -7,7 +7,7 @@
   font-family: "Poppins", sans-serif;
 }
 
-body{
+body {
   overflow: hidden !important;
 }
 
@@ -43,7 +43,7 @@ body{
   z-index: 2;
 }
 
- .video-container {
+.video-container {
   display: flex;
   flex-direction: column;
   height: 100%;
@@ -52,7 +52,7 @@ body{
   gap: 20px;
 }
 
-#btn-back{
+#btn-back {
   width: 90px;
 }
 
@@ -71,18 +71,28 @@ body{
   text-align: center;
 }
 
-.vjs-play-control{
+.vjs-play-control {
   display: grid;
   place-items: center;
 }
 
-/* Custom styles for the play and pause icons */
 .vjs-play-toggle.vjs-paused .vjs-icon-placeholder:before {
   content: "\f144"; /* Pause icon */
 }
 
 .vjs-play-toggle.vjs-playing .vjs-icon-placeholder:before {
   content: "\f144"; /* Play icon */
+}
+
+.vjs-remaining-time-display {
+  font-size: 11px;
+}
+.vjs-time-control {
+  padding-right: 0 !important;
+}
+
+.vjs-picture-in-picture-control {
+  display: none !important;
 }
 
 .lower-container {
@@ -97,6 +107,15 @@ body{
   gap: 10px;
 }
 
+@media screen and (max-width:1020px) {
+  .navbar,.navbar.is-link {
+    position: fixed;
+    right: 0;
+    z-index: 30;
+    width: 100%;
+  }
+}
+
 @media screen and (max-width: 900px) {
   .video-container {
     height: 85vh;
@@ -108,11 +127,10 @@ body{
     height: 450px;
   }
 
-  .lower-container{
+  .lower-container {
     height: auto;
     gap: 40px;
   }
-
 }
 
 @media screen and (max-width: 450px) {
@@ -120,14 +138,22 @@ body{
     font-size: 28px;
   }
 
-  .quality-container,.server-container{
+  .quality-container,
+  .server-container {
     gap: 10px;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
   }
 
-  .quality-container h3,.server-container h3{
+  .quality-container h3,
+  .server-container h3 {
     width: 100%;
   }
+
+  .video-container{
+    height: 100%;
+    margin-top: 100px;
+  }
+
 }

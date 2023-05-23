@@ -28,20 +28,35 @@ const goBack = () => {
 
 player.ready(function() {
   let controlBar = this.controlBar;
-  this.on('play', function() {
-    // Remove the "paused" class from the play toggle button
-    controlBar.playToggle.removeClass('vjs-paused');
-    // Add the "playing" class to the play toggle button
-    controlBar.playToggle.addClass('vjs-playing');
+  this.on("play", function() {
+    controlBar.playToggle.removeClass("vjs-paused");
+    controlBar.playToggle.addClass("vjs-playing");
   });
 
-  this.on('pause', function() {
-    // Remove the "playing" class from the play toggle button
-    controlBar.playToggle.removeClass('vjs-playing');
-    // Add the "paused" class to the play toggle button
-    controlBar.playToggle.addClass('vjs-paused');
+  this.on('timeupdate', function() {
+    const remainingTime = player.remainingTime();
+    const remainingTimeString = formatTime(remainingTime);
+    const remainingTimeDisplay = document.querySelector('.vjs-remaining-time-display');
+    remainingTimeDisplay.innerHTML = remainingTimeString;
+  });
+  //helper function formatter
+  function formatTime(timeInSeconds) {
+    const hours = Math.floor(timeInSeconds / 3600);
+    const hoursCheck = hours ? hours + ':'  : '' // check if the video length has hours
+    const minutes = Math.floor((timeInSeconds % 3600) / 60);
+    const seconds = Math.floor(timeInSeconds % 60);
+  
+    return ('' + hoursCheck).slice(-2) +
+           ('0' + minutes).slice(-2) + ':' +
+           ('0' + seconds).slice(-2);
+  }
+
+  this.on("pause", function() {
+    controlBar.playToggle.removeClass("vjs-playing");
+    controlBar.playToggle.addClass("vjs-paused");
   });
 });
+
 
 const getAnimeVideoEp = async () => {
   try {

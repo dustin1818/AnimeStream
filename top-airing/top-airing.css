@@ -7,6 +7,7 @@
   font-family: "Poppins", sans-serif;
   scroll-behavior: smooth;
 }
+
 .nav-mobile {
   display: none;
 }
@@ -203,6 +204,19 @@ main {
   bottom: 0;
 }
 
+@media screen and (max-width:1020px) {
+  .navbar.is-link {
+    position: fixed;
+    right: 0;
+    z-index: 30;
+    width: 100%;
+  }
+
+  .upper-container{
+    margin-top: 75px;
+  }
+}
+
 @media screen and (max-width: 450px) {
   .navbar-item p {
     font-size: 28px;
@@ -212,11 +226,19 @@ main {
     padding: 20px;
   }
 
+  .upper-container{
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    margin-top: 100px;
+  }
+
   .btn-container {
     justify-content: center;
   }
 
   .card_wrapper {
     grid-template-columns: auto;
+    margin-top: 58px;
   }
 }

@@ -230,6 +230,16 @@ align-items: center;
   flex-wrap: wrap;
 }
 
+
+@media screen and (max-width:1020px) {
+  .navbar.is-link {
+    position: fixed;
+    right: 0;
+    z-index: 30;
+    width: 100%;
+  }
+}
+
 @media screen and (max-width: 450px) {
   .navbar-item p {
     font-size: 28px;
@@ -242,6 +252,10 @@ align-items: center;
   .anime_div,
   .episode_div {
     padding: 20px;
+  }
+
+  .main_div{
+    margin-top: 100px;
   }
 
   .left_div {
