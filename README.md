@@ -4,13 +4,9 @@
 - personal project
 
 Things to Do
-- fix anime length video for videojs when playing a video
 - add 404 page if enter button is pressed and no data to be fetched
+- add footer
 - add icon for website
-- update title tab for each html page
-- add quality tab for each video
-- add scroll up button
-- fix x icon for navbar for mobile
 - update navbar button content
 
 
