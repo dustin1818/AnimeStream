@@ -47,6 +47,7 @@ const fetchAnime = async () => {
       img.classList.add("img_card");
       img.src = anime.image;
       img.alt = anime.image;
+      img.setAttribute("loading", "lazy");
       figure.appendChild(img);
       card_image.appendChild(figure);
       const container = document.createElement("div");
@@ -106,7 +107,6 @@ const searchAnimeData = async (inputData) => {
       `https://c.delusionz.xyz/anime/gogoanime/${inputData}?page=${page}`
     );
 
-    console.log(getAnimeResult.data, `This is page ${page}`);
     const { results } = getAnimeResult.data;
     loader_container.style.display = "none";
     loader.style.display = "none";
@@ -125,6 +125,7 @@ const searchAnimeData = async (inputData) => {
       img.classList.add("img_card");
       img.src = anime.image;
       img.alt = anime.image;
+      img.setAttribute("loading", "lazy");
       figure.appendChild(img);
       card_image.appendChild(figure);
       const container = document.createElement("div");
@@ -153,7 +154,6 @@ const searchAnimeData = async (inputData) => {
 };
 
 const searchBar = document.querySelector(".input");
-
 searchBar.addEventListener("keydown", (e) => {
   let searchValue = searchBar.value;
   if (e.key === "Enter") {
