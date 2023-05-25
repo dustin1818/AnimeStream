@@ -1,8 +1,5 @@
 const player = videojs("my-video");
-
 const ep_id = JSON.parse(localStorage.getItem("ep_id"));
-console.log(ep_id);
-
 const nav = document.getElementById("nav");
 const nav_mobile = document.querySelector(".nav-mobile");
 nav.addEventListener("click", () => {
@@ -86,42 +83,32 @@ const getAnimeVideoEp = async () => {
       `https://c.delusionz.xyz/anime/gogoanime/watch/${episodeName}?server=${streamSelections}`
     );
 
+    console.log(data);
     //360p
     lowQualityBtn.addEventListener("click", () => {
-      alert('Updating quality');
-      player.currentTime(0);
       player.src(`${data.sources[0].url}`);
     });
 
     //480p
     semilowQualityBtn.addEventListener("click", () => {
-      alert('Updating quality');
-      player.currentTime(0);
       player.src(`${data.sources[1].url}`);
     });
 
     //720p
     mediumQualityBtn.addEventListener("click", () => {
-      alert('Updating quality');
-      player.currentTime(0);
       player.src(`${data.sources[2].url}`);
     });
 
     //1080p
     highQualityBtn.addEventListener("click", () => {
-      alert('Updating quality');
-      player.currentTime(0);
       player.src(`${data.sources[3].url}`);
     });
 
     //auto
     autoQualityBtn.addEventListener("click", () => {
-      alert('Updating quality');
-      player.currentTime(0);
       player.src(`${data.sources[4].url}`);
     });
-    alert('Video will start playing');
-    player.currentTime(0);
+    alert('Episode is now available');
     player.src(`${data.sources[3].url}`);
   } catch (e) {
     throw new Error(e.message);
