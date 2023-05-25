@@ -60,25 +60,24 @@ player.ready(function () {
   });
 });
 
-Vidstreaming.addEventListener("click", () => {
-  streamSelections = "vidstreaming";
-  alert("Choose a video quality");
-});
-GogoServer.addEventListener("click", () => {
-  streamSelections = "gogocdn";
-  alert("Choose a video quality");
-});
-Streamsb.addEventListener("click", () => {
-  streamSelections = "streamsb";
-  player.currentTime(0);
-  alert("Choose a video quality");
-});
 
 const getAnimeVideoEp = async () => {
   try {
     let episodeName = ep_id.id;
     console.log(episodeName);
     let streamSelections = "vidstreaming";
+    Vidstreaming.addEventListener("click", () => {
+      streamSelections = "vidstreaming";
+      alert("Choose a video quality");
+    });
+    GogoServer.addEventListener("click", () => {
+      streamSelections = "gogocdn";
+      alert("Choose a video quality");
+    });
+    Streamsb.addEventListener("click", () => {
+      streamSelections = "streamsb";
+      alert("Choose a video quality");
+    });    
     const { data } = await axios.get(
       `https://c.delusionz.xyz/anime/gogoanime/watch/${episodeName}?server=${streamSelections}`
     );
@@ -108,7 +107,7 @@ const getAnimeVideoEp = async () => {
     autoQualityBtn.addEventListener("click", () => {
       player.src(`${data.sources[4].url}`);
     });
-    alert('Episode is now available');
+    alert('Video is now playable');
     player.src(`${data.sources[3].url}`);
   } catch (e) {
     throw new Error(e.message);
