@@ -92,6 +92,10 @@ footer strong , footer a{
     height: auto;
     gap: 40px;
   }
+
+  #video{
+    height: 375px;
+  }
 }
 
 @media screen and (max-width: 450px) {
