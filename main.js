@@ -153,23 +153,27 @@ const searchAnimeData = async (inputData) => {
   }
 };
 
-const searchBar = document.querySelector(".input");
+const searchBar = document.getElementById("search");
 searchBar.addEventListener("keydown", (e) => {
-  let searchValue = searchBar.value;
   if (e.key === "Enter") {
-    if (/^\s/.test(searchValue)) {
-      searchValue = "";
+    e.preventDefault();
+    let searchValue = searchBar.value.trim();
+    if(searchValue.length === 0) {
+      alert("Please enter a value..")
+    }else{
+      loader_container.style.display = "flex";
+      loader.style.display = "inline-block";
+      next.style.display = "none";
+      prev.style.display = "none";
+      card_layout.innerHTML = " ";
+      searchAnimeData(searchValue);
+      next2.style.display = "flex";
+      prev2.style.display = "flex";
     }
-    loader_container.style.display = "flex";
-    loader.style.display = "inline-block";
-    next.style.display = "none";
-    prev.style.display = "none";
-    card_layout.innerHTML = " ";
-    searchAnimeData(searchValue);
-    next2.style.display = "flex";
-    prev2.style.display = "flex";
   }
 });
+
+
 
 next2.addEventListener("click", () => {
   page++;

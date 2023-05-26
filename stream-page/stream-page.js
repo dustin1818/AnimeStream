@@ -1,3 +1,6 @@
+//VIDEO JS WAS USED HERE
+
+
 const player = videojs("my-video");
 const ep_id = JSON.parse(localStorage.getItem("ep_id"));
 const nav = document.getElementById("nav");
@@ -60,7 +63,6 @@ player.ready(function () {
   });
 });
 
-
 const getAnimeVideoEp = async () => {
   try {
     let episodeName = ep_id.id;
@@ -115,3 +117,26 @@ const getAnimeVideoEp = async () => {
 };
 
 getAnimeVideoEp();
+
+
+// var seekBar = player.controlBar.progressControl.seekBar;
+// console.log(seekBar)
+
+// // function updateSeekBar() {
+// //   var currentTime = player.currentTime();
+// //   var duration = player.duration();
+// //   var percentage = (currentTime / duration) * 100;
+
+// //   // Update the seek bar's position
+// //   seekBar.el().style.width = percentage + '%';
+
+// //   // Update the aria attributes
+// //   seekBar.el().setAttribute('aria-valuenow', currentTime);
+// //   seekBar.el().setAttribute('aria-valuemax', duration);
+
+// //   // Request the next frame update
+// //   requestAnimationFrame(updateSeekBar);
+// // }
+
+// // // Start updating the seek bar
+// // updateSeekBar();
