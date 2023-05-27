@@ -5,7 +5,6 @@
 
 Things to Do
 - add 404 page if enter button is pressed and no data to be fetched
-- add footer
 - add icon for website
 - update navbar button content
 
