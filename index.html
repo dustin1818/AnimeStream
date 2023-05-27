@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="./main.css">
   <link href="https://cdn.jsdelivr.net/npm/remixicon@3.2.0/fonts/remixicon.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
 </head>
 
 <body>
@@ -86,8 +87,16 @@
     </div>
   </nav>
 
-  <main>
 
+  <section class="carousel-container">
+    <div class="swiper mySwiper">
+      <div class="swiper-wrapper">
+      </div>
+      <div class="swiper-scrollbar"></div>
+    </div>
+  </section>
+
+  <main>
     <div class="loader-container">
       <div class="three-body">
         <div class="three-body__dot"></div>
@@ -118,6 +127,7 @@
     </div>
 
 
+    <h2 class="subheading">Recent Anime</h2>
     <div id="card_wrapper" class="card_wrapper">
 
     </div>
@@ -133,6 +143,7 @@
 
 
   <!-- Javascript File  -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   <script src="./main.js"></script>
 </body>

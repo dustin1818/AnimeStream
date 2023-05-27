@@ -1,3 +1,5 @@
+'use strict';
+
 const anime_info = JSON.parse(localStorage.getItem("anime-info"));
 console.log(anime_info);
 const anime_div = document.getElementById("anime_div");

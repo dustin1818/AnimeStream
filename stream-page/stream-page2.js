@@ -1,4 +1,5 @@
 //HLS VIDEO PLAYR WAS USED HERE
+'use strict';
 
 const ep_id = JSON.parse(localStorage.getItem("ep_id"));
 const nav = document.getElementById("nav");

@@ -1,13 +1,14 @@
 "use strict";
-
+//pagination div
 const next = document.getElementById("next");
 const prev = document.getElementById("prev");
 const next2 = document.getElementById("next2");
 const prev2 = document.getElementById("prev2");
 const card_layout = document.getElementById("card_wrapper");
+//api
 const url = "https://c.delusionz.xyz/anime/gogoanime/recent-episodes";
 let page = 1;
-
+//navbar
 const nav = document.getElementById("nav");
 const nav_mobile = document.querySelector(".nav-mobile");
 nav.addEventListener("click", () => {
@@ -15,26 +16,64 @@ nav.addEventListener("click", () => {
   nav_mobile.classList.toggle("nav-mobile-active");
 });
 
+//carousel container
+const carousel_container = document.querySelector(".carousel-container");
+//loader
 const loader_container = document.querySelector(".loader-container");
 const loader = document.querySelector(".three-body");
 loader_container.style.display = "flex";
 loader.style.display = "inline-block";
-
+//search container
 const search_container = document.querySelector(".upper-container");
 search_container.style.display = "none";
-
+//pagination container
 const btn_container = document.querySelector(".btn-container");
 btn_container.style.display = "none";
+//footer container
+const footer = document.querySelector(".footer");
+//carousel function
+const swiper = new Swiper(".mySwiper", {
+  scrollbar: {
+    el: ".swiper-scrollbar",
+    hide: true,
+  },
+    autoplay: {
+    delay: 3000,
+    disableOnInteraction: false,
+  },
+});
 
+//get anime
 const fetchAnime = async () => {
   try {
     const data = await axios.get(`${url}?page=${page}`);
     const { results } = data.data;
     loader_container.style.display = "none";
     loader.style.display = "none";
+    carousel_container.style.display = "flex";
     search_container.style.display = "flex";
+    footer.style.display = "block";
     btn_container.style.display = "flex";
+
+    for (let i = 4; i <= 12; i++) {
+      //carousel add image
+      const carousel_image = document.createElement("img");
+      carousel_image.classList
+      carousel_image.src = results[i].image;
+      const carousel_text = document.createElement("h2");
+      carousel_text.classList.add("carousel_text");
+      carousel_text.innerText = results[i].title;
+      console.log(results);
+      const swiper_wrapper = document.querySelector(".swiper-wrapper");
+      const swiper_slide = document.createElement("div");
+      swiper_slide.classList.add("swiper-slide");
+      swiper_slide.classList.add("overlay");
+      swiper_slide.append(carousel_image,carousel_text);
+      swiper_wrapper.append(swiper_slide);
+    }
+
     results.forEach((anime) => {
+      //recent anime
       const checkAnimeTitle = anime.title ? `${anime.title}` : `${anime.id}`;
       const card = document.createElement("div");
       card.classList.add("card");
@@ -77,6 +116,7 @@ const fetchAnime = async () => {
 
 fetchAnime();
 
+//pagination
 next.addEventListener("click", () => {
   loader_container.style.display = "flex";
   loader.style.display = "inline-block";
@@ -96,11 +136,13 @@ prev.addEventListener("click", (e) => {
   }
 });
 
+//get anime details then linked to another page
 const getCard = (anime) => {
   localStorage.setItem("anime-info", JSON.stringify(anime));
   window.location.href = "./anime-details/anime-details.html";
 };
 
+//serach anime data
 const searchAnimeData = async (inputData) => {
   try {
     const getAnimeResult = await axios.get(
@@ -158,9 +200,9 @@ searchBar.addEventListener("keydown", (e) => {
   if (e.key === "Enter") {
     e.preventDefault();
     let searchValue = searchBar.value.trim();
-    if(searchValue.length === 0) {
-      alert("Please enter a value..")
-    }else{
+    if (searchValue.length === 0) {
+      alert("Please enter a value..");
+    } else {
       loader_container.style.display = "flex";
       loader.style.display = "inline-block";
       next.style.display = "none";
@@ -173,8 +215,7 @@ searchBar.addEventListener("keydown", (e) => {
   }
 });
 
-
-
+//pagination for search anime
 next2.addEventListener("click", () => {
   page++;
   console.log(page);
