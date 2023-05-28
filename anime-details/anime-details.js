@@ -1,7 +1,7 @@
 'use strict';
 
 const anime_info = JSON.parse(localStorage.getItem("anime-info"));
-console.log(anime_info);
+// console.log(anime_info);
 const anime_div = document.getElementById("anime_div");
 const episode_div = document.getElementById("list-ep");
 
@@ -23,10 +23,12 @@ ep_header.style.display = "none";
 const hr = document.getElementById("hr");
 hr.style.display = "none";
 
+const footer = document.querySelector(".footer");
+
 const getAnimeInfo = async () => {
   try {
     const data = await axios.get(
-      `https://c.delusionz.xyz/anime/gogoanime/info/${anime_info.id}`
+      `https://c.delusionz.xyz/meta/anilist/info/${anime_info.id}?provider=gogoanime`
     );
     const anime_data = data.data;
     console.log(anime_data);
@@ -34,6 +36,7 @@ const getAnimeInfo = async () => {
     loader.style.display = "none";
     ep_header.style.display = "flex";
     hr.style.display = "flex";
+    footer.style.display = "block";
     const main_div = document.createElement("div");
     main_div.className = "main_div";
     //left-div
@@ -52,9 +55,9 @@ const getAnimeInfo = async () => {
     const title = document.createElement("h3");
     title.className = "title";
     title.classList.add("title2");
-    const checkAnimeTitle = anime_data.title
-      ? `${anime_data.title}`
-      : `${anime_data.id}`;
+    const checkAnimeTitle = anime_data.title.english
+      ? `${anime_data.title.english}`
+      : `${anime_data.title.native}`;
     title.innerText = checkAnimeTitle;
     //type
     const type_container = document.createElement("div");
@@ -135,16 +138,16 @@ const getAnimeInfo = async () => {
     //combine left and right div to main div
     main_div.append(left_div, right_div);
     anime_div.append(main_div);
-    for (let i = 1; i <= anime_data.episodes.length; i++) {
+    for (let i = 0; i <= anime_data.episodes.length; i++) {
       const btn = document.createElement("btn");
       btn.classList.add("button");
       btn.classList.add("is-link");
       btn.classList.add("is-outlined");
-      btn.innerText = `Episode ${i}`;
+      btn.innerText = `Episode ${anime_data.episodes[i].number}`;
       btn.addEventListener("click", () => {
-        const ep_id = anime_data.episodes[i - 1];
-        console.log(ep_id);
-        localStorage.setItem("ep_id", JSON.stringify(ep_id));
+        let anime_ep = anime_data.episodes;
+        const ep_id = anime_ep[i - 0];
+         localStorage.setItem("ep_id", JSON.stringify(ep_id));
         location.href = "../stream-page/stream-page.html";
       });
       episode_div.append(btn);

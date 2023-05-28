@@ -234,7 +234,8 @@ align-items: center;
   flex-wrap: wrap;
 }
 
-footer{
+.footer{
+  display: none;
   position: relative;
   bottom: 0;
   width: 100%;

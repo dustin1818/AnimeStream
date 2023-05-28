@@ -6,7 +6,7 @@ const next2 = document.getElementById("next2");
 const prev2 = document.getElementById("prev2");
 const card_layout = document.getElementById("card_wrapper");
 //api
-const url = "https://c.delusionz.xyz/anime/gogoanime/recent-episodes";
+const url = "https://c.delusionz.xyz/meta/anilist/recent-episodes";
 let page = 1;
 //navbar
 const nav = document.getElementById("nav");
@@ -54,7 +54,6 @@ const fetchAnime = async () => {
     search_container.style.display = "flex";
     footer.style.display = "block";
     btn_container.style.display = "flex";
-
     for (let i = 4; i <= 12; i++) {
       //carousel add image
       const carousel_image = document.createElement("img");
@@ -62,8 +61,7 @@ const fetchAnime = async () => {
       carousel_image.src = results[i].image;
       const carousel_text = document.createElement("h2");
       carousel_text.classList.add("carousel_text");
-      carousel_text.innerText = results[i].title;
-      console.log(results);
+      carousel_text.innerText = results[i].title.english ? `${results[i].title.english}` : `${results[i].title.userPreferred}`;
       const swiper_wrapper = document.querySelector(".swiper-wrapper");
       const swiper_slide = document.createElement("div");
       swiper_slide.classList.add("swiper-slide");
@@ -71,10 +69,10 @@ const fetchAnime = async () => {
       swiper_slide.append(carousel_image,carousel_text);
       swiper_wrapper.append(swiper_slide);
     }
-
     results.forEach((anime) => {
       //recent anime
-      const checkAnimeTitle = anime.title ? `${anime.title}` : `${anime.id}`;
+      console.log(anime);
+      const checkAnimeTitle = anime.title.english ? `${anime.title.english}` : `${anime.title.userPreferred}`;
       const card = document.createElement("div");
       card.classList.add("card");
       const card_image = document.createElement("div");

@@ -2,6 +2,7 @@
 'use strict';
 
 const ep_id = JSON.parse(localStorage.getItem("ep_id"));
+console.log(ep_id)
 const nav = document.getElementById("nav");
 const nav_mobile = document.querySelector(".nav-mobile");
 nav.addEventListener("click", () => {
@@ -27,29 +28,39 @@ const Streamsb = document.getElementById("Streamsb");
 
 const getEp = async () => {
   let episodeName = ep_id.id;
-  let streamSelections = "vidstreaming";
+  let serverData = await axios.get(`https://c.delusionz.xyz/meta/anilist/servers/${episodeName}`);
+  let streamServerData = serverData.data;
   Vidstreaming.addEventListener("click", () => {
-    streamSelections = "vidstreaming";
-    alert("Choose a video quality");
+    streamServerData.map((e) => {
+      if(e.name === "Vidstreaming"){
+        window.open(e.url, '_blank');
+      }
   });
+});
   GogoServer.addEventListener("click", () => {
-    streamSelections = "gogocdn";
-    alert("Choose a video quality");
+    streamServerData.map((e) => {
+      if(e.name === "Gogo server"){
+        window.open(e.url, '_blank');
+      }
+  });
   });
   Streamsb.addEventListener("click", () => {
-    streamSelections = "streamsb";
-    alert("Choose a video quality");
+    streamServerData.map((e) => {
+      if(e.name === "Streamsb"){
+        window.open(e.url, '_blank');
+      }
+  });
   });
   const { data } = await axios.get(
-    `https://c.delusionz.xyz/anime/gogoanime/watch/${episodeName}?server=${streamSelections}`
+    `https://api.consumet.org/meta/anilist/watch/${episodeName}`
   );
-  console.log(data);
   const lowQualityVid = data.sources[0].url;
   const semilowQualityVid = data.sources[1].url;
   const mediumQualityVid = data.sources[2].url;
   const highQualityVid = data.sources[3].url;
   const autoQualityVid = data.sources[4].url;
   const video = document.getElementById("video");
+  console.log(data);
   const defaultOptions = {};
   if (Hls.isSupported()) {
     const hls = new Hls();
