@@ -144,7 +144,7 @@ const getCard = (anime) => {
 const searchAnimeData = async (inputData) => {
   try {
     const getAnimeResult = await axios.get(
-      `https://c.delusionz.xyz/anime/gogoanime/${inputData}?page=${page}`
+      `https://c.delusionz.xyz/meta/anilist/${inputData}?page=${page}`
     );
 
     const { results } = getAnimeResult.data;
@@ -153,7 +153,7 @@ const searchAnimeData = async (inputData) => {
     search_container.style.display = "flex";
     btn_container.style.display = "flex";
     results.forEach((anime) => {
-      const checkAnimeTitle = anime.title ? `${anime.title}` : `${anime.id}`;
+      const checkAnimeTitle = anime.title.english ? `${anime.title.english}` : `${anime.title.userPreferred}`;
       const card = document.createElement("div");
       card.classList.add("card");
       const card_image = document.createElement("div");

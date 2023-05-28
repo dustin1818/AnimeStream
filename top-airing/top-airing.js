@@ -3,7 +3,7 @@
 const next = document.getElementById("next");
 const prev = document.getElementById("prev");
 const card_layout = document.getElementById("card_wrapper");
-const url = "https://c.delusionz.xyz/anime/gogoanime/top-airing";
+const url = "https://c.delusionz.xyz/meta/anilist/trending";
 let page = 1;
 
 const nav = document.getElementById('nav');
@@ -32,7 +32,7 @@ const fetchAnime = async () => {
     loader.style.display = "none";
     btn_container.style.display = "flex";
     results.forEach((anime) => {
-      const checkAnimeTitle = anime.title ? `${anime.title}` : `${anime.id}`;
+      const checkAnimeTitle = anime.title ? `${anime.title.english}` : `${anime.id.userPreferred}`;
       const card = document.createElement("div");
       card.classList.add("card");
       const card_image = document.createElement("div");
