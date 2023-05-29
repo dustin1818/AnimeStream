@@ -2,14 +2,13 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Anime Stream</title>
-  <link rel="stylesheet" href="./anime-details.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
-  <link href="https://vjs.zencdn.net/7.2.3/video-js.css" rel="stylesheet">
-
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anime Stream</title>
+    <link rel="stylesheet" href="./movies.css">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.2.0/fonts/remixicon.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
 </head>
 
 <body>
@@ -36,11 +35,11 @@
         <a href="../top-airing/top-airing.html">
           Top Airing
         </a>
-        <a href="../popular/popular.html">
+
+        <a href="./popular.html">
           Popular
         </a>
-
-        <a href="../movies/movies.html" >
+        <a href="./movies.html">
           Movies
         </a>
       </div>
@@ -55,20 +54,21 @@
         <a href="../top-airing/top-airing.html" class="navbar-item">
           Top Airing
         </a>
+
         <a href="../popular/popular.html" class="navbar-item">
           Popular
         </a>
 
-        <a href="../movies/movies.html" class="navbar-item">
+        <a href="./movies.html" class="navbar-item">
           Movies
         </a>
 
-        <div class="navbar-item has-dropdown is-hoverable">
-          <a class="navbar-link">
+        <div class="navbar-item has-dropdown is-hoverable" >
+          <a class="navbar-link" >
             More
           </a>
 
-          <div class="navbar-dropdown">
+          <div class="navbar-dropdown" >
             <a class="navbar-item">
               About
             </a>
@@ -101,38 +101,38 @@
     </div>
   </nav>
 
-  <main>
-    <div class="loader-container">
-      <div class="three-body">
-        <div class="three-body__dot"></div>
-        <div class="three-body__dot"></div>
-        <div class="three-body__dot"></div>
+    <main>
+      <div class="loader-container">
+        <div class="three-body">
+          <div class="three-body__dot"></div>
+          <div class="three-body__dot"></div>
+          <div class="three-body__dot"></div>
+        </div>
       </div>
-    </div>
+        <div class="btn-container">
+            <button id="prev" class="button"><i class="ri-arrow-left-s-line ri-lg"></i></button>
+            <button id="next" class="button"><i class="ri-arrow-right-s-line ri-lg"></i></button>
+        </div>
 
-      <button id="btn-back" onclick="goBack()" class="button is-link is-outlined">Go Back</button>
+        <h2 class="subheading">Anime Movies</h2>
 
-    <div id="anime_div" class="anime_div">
-    </div>
+        <div id="card_wrapper" class="card_wrapper">
 
-    <div id="episode_div" class="episode_div">
-      <h3 id="ep-header" class="title">Episode List</h3>
-      <hr id="hr">
+        </div>
+    </main>
 
-      <div id="list-ep" class="list-ep"></div>
-    </div>
-  </main>
+    <footer class="footer p-5">
+      <div class="content has-text-centered">
+        <p>
+          <strong><a href="#">Anime Stream</a></strong> Stream for free without ads! The source code is by <a target="_blank" href="https://github.com/dustin1818">Dustin</a>. Credits to c.delusion for the api.
+        </p>
+      </div>
+    </footer>
+  
 
-  <footer class="footer p-5">
-    <div class="content has-text-centered">
-      <p>
-        <strong><a href="#">Anime Stream</a></strong> Stream for free without ads! The source code is by <a target="_blank" href="https://github.com/dustin1818">Dustin</a>. Credits to c.delusion for the api.
-      </p>
-    </div>
-  </footer>
-
-  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-  <script src="./anime-details.js"></script>
+    <!-- Javascript File  -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="./movies.js"></script>
 </body>
 
 </html>

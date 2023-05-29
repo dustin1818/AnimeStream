@@ -29,6 +29,7 @@ search_container.style.display = "none";
 //pagination container
 const btn_container = document.querySelector(".btn-container");
 btn_container.style.display = "none";
+const subheading = document.querySelector(".subheading");
 //footer container
 const footer = document.querySelector(".footer");
 //carousel function
@@ -52,6 +53,7 @@ const fetchAnime = async () => {
     loader.style.display = "none";
     carousel_container.style.display = "flex";
     search_container.style.display = "flex";
+    subheading.style.display = "flex";
     footer.style.display = "block";
     btn_container.style.display = "flex";
     for (let i = 4; i <= 12; i++) {
@@ -84,7 +86,6 @@ const fetchAnime = async () => {
       img.classList.add("img_card");
       img.src = anime.image;
       img.alt = anime.image;
-      img.setAttribute("loading", "lazy");
       figure.appendChild(img);
       card_image.appendChild(figure);
       const container = document.createElement("div");
@@ -152,6 +153,8 @@ const searchAnimeData = async (inputData) => {
     loader.style.display = "none";
     search_container.style.display = "flex";
     btn_container.style.display = "flex";
+    subheading.style.display = "flex";
+    subheading.innerText = "Search Results"
     results.forEach((anime) => {
       const checkAnimeTitle = anime.title.english ? `${anime.title.english}` : `${anime.title.userPreferred}`;
       const card = document.createElement("div");
@@ -165,7 +168,6 @@ const searchAnimeData = async (inputData) => {
       img.classList.add("img_card");
       img.src = anime.image;
       img.alt = anime.image;
-      img.setAttribute("loading", "lazy");
       figure.appendChild(img);
       card_image.appendChild(figure);
       const container = document.createElement("div");
@@ -205,6 +207,7 @@ searchBar.addEventListener("keydown", (e) => {
       loader.style.display = "inline-block";
       next.style.display = "none";
       prev.style.display = "none";
+      subheading.style.display = "none";
       card_layout.innerHTML = " ";
       searchAnimeData(searchValue);
       next2.style.display = "flex";

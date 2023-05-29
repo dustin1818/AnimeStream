@@ -44,7 +44,6 @@ const fetchAnime = async () => {
       img.classList.add("img_card");
       img.src = anime.image;
       img.alt = anime.image;
-      img.setAttribute("loading", "lazy");
       figure.appendChild(img);
       card_image.appendChild(figure);
       const container = document.createElement("div");

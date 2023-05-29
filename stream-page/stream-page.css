@@ -51,15 +51,14 @@ body {
   padding: 30px 50px;
   gap: 20px;
 }
-
+/* 
 #video{
   height: 650px;
-}
+} */
 
 #btn-back {
   width: 90px;
 }
-
 
 .lower-container {
   display: flex;

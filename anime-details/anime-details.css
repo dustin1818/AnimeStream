@@ -40,6 +40,10 @@
   z-index: 2;
 }
 
+main{
+  padding: 40px;
+}
+
 .loader-container{
 display: none;
 position: absolute;
@@ -163,7 +167,7 @@ align-items: center;
 
 .anime_div,
 .episode_div {
-  padding: 40px;
+  padding: 40px 0;
 }
 
 .main_div {
@@ -270,8 +274,7 @@ footer strong , footer a{
     margin-bottom: 15px !important;
   }
 
-  .anime_div,
-  .episode_div {
+  main{
     padding: 40px 20px;
   }
 

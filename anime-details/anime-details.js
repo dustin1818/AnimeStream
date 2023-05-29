@@ -25,6 +25,11 @@ hr.style.display = "none";
 
 const footer = document.querySelector(".footer");
 
+
+const goBack = () => {
+  window.location.href = "../index.html";
+};
+
 const getAnimeInfo = async () => {
   try {
     const data = await axios.get(
@@ -46,7 +51,6 @@ const getAnimeInfo = async () => {
     img.className = "anime-img";
     img.src = anime_data.image;
     img.alt = anime_data.image;
-    img.setAttribute("loading", "lazy");
     left_div.appendChild(img);
     //right-div
     const right_div = document.createElement("div");
