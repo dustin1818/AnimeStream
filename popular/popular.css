@@ -9,6 +9,10 @@
   text-decoration: none;
 }
 
+.title{
+  font-size: 30px !important;
+}
+
 /* navbar mobile  */
 .nav-mobile {
   display: none;
@@ -35,7 +39,7 @@
 .nav-mobile-active a {
   color: #ffffff;
   font-weight: 600;
-  font-size: 40px;
+  font-size: 30px;
 }
 
 .navbar-burger {

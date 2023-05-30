@@ -11,6 +11,10 @@ body {
   overflow: hidden !important;
 }
 
+.title{
+  font-size: 30px !important;
+}
+
 .nav-mobile {
   display: none;
 }
@@ -36,7 +40,7 @@ body {
 .nav-mobile-active a {
   color: #ffffff;
   font-weight: 600;
-  font-size: 40px;
+  font-size: 30px;
 }
 
 .navbar-burger {

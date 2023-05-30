@@ -8,6 +8,9 @@
   scroll-behavior: smooth;
   text-decoration: none;
 }
+.title{
+  font-size: 30px !important;
+}
 
 /* navbar mobile  */
 .nav-mobile {
@@ -35,7 +38,7 @@
 .nav-mobile-active a {
   color: #ffffff;
   font-weight: 600;
-  font-size: 40px;
+  font-size: 30px;
 }
 
 .navbar-burger {
@@ -173,7 +176,7 @@ main {
 /* carousel  */
 .carousel-container {
   position: relative;
-  height: 65vh;
+  height: 650px;
   margin: 0;
   padding: 0;
   display: none;
@@ -341,13 +344,14 @@ main {
 /* anime grid layout  */
 .card_wrapper {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
-  gap: 40px;
+  grid-template-columns: repeat(7,1fr);
+  gap: 20px;
 }
 
 .card{
   background: transparent !important;
   border-radius: 100px !important; 
+  box-shadow: none !important;
 }
 .img_card {
   width: 100%;
@@ -368,26 +372,36 @@ main {
   position: relative;
 }
 
-.container.is-fullhd {
+.recent-episode-container{
   position: absolute;
-  width: 255px;
-  bottom: 15px;
+  top: 15px;
+  z-index: 1;
+  right: 0px;
+  color: white;
+  background: #485fc7;
+  text-align: center;
+  padding: 8px;
+  border-radius: 1px;
+  font-size: 14px;
+}
+
+.container.is-fullhd {
   display: flex;
   justify-content: center;
   align-items: center;
-  left: 0;
-  right: 0;
 }
 
 .notification {
-  border-radius: 10px !important;
+  background-color: transparent !important;
   text-align: center;
-  padding: 10px 20px !important;
-  z-index: 2;
+  padding: 10px !important;
 }
 
 .notification.is-link p{
   font-weight: 500;
+  font-size: 14px;
+  color: #383737;
+  width: 100%;
 }
 
 .footer {

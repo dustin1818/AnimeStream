@@ -47,7 +47,7 @@ const swiper = new Swiper(".mySwiper", {
 //get anime
 const fetchAnime = async () => {
   try {
-    const data = await axios.get(`${url}?page=${page}`);
+    const data = await axios.get(`${url}?page=${page}&perPage=21`);
     const { results } = data.data;
     loader_container.style.display = "none";
     loader.style.display = "none";
@@ -77,6 +77,11 @@ const fetchAnime = async () => {
       const checkAnimeTitle = anime.title.english ? `${anime.title.english}` : `${anime.title.userPreferred}`;
       const card = document.createElement("div");
       card.classList.add("card");
+      const recentEp = document.createElement("div");
+      recentEp.classList.add("recent-episode-container");
+      const recentEpText = document.createElement("p");
+      recentEp.innerText = `Episode ${anime.episodeNumber}`;
+      recentEp.append(recentEpText);
       const card_image = document.createElement("div");
       card_image.classList.add("card-image");
       const figure = document.createElement("figure");
@@ -87,7 +92,7 @@ const fetchAnime = async () => {
       img.src = anime.image;
       img.alt = anime.image;
       figure.appendChild(img);
-      card_image.appendChild(figure);
+      card_image.append(figure,recentEp);
       const container = document.createElement("div");
       container.classList.add("container");
       container.classList.add("is-fullhd");
@@ -145,7 +150,7 @@ const getCard = (anime) => {
 const searchAnimeData = async (inputData) => {
   try {
     const getAnimeResult = await axios.get(
-      `https://c.delusionz.xyz/meta/anilist/${inputData}?page=${page}`
+      `https://c.delusionz.xyz/meta/anilist/${inputData}?page=${page}&perPage=21`
     );
 
     const { results } = getAnimeResult.data;
@@ -156,9 +161,15 @@ const searchAnimeData = async (inputData) => {
     subheading.style.display = "flex";
     subheading.innerText = "Search Results"
     results.forEach((anime) => {
+      console.log(anime);
       const checkAnimeTitle = anime.title.english ? `${anime.title.english}` : `${anime.title.userPreferred}`;
       const card = document.createElement("div");
       card.classList.add("card");
+      const recentEp = document.createElement("div");
+      recentEp.classList.add("recent-episode-container");
+      const recentEpText = document.createElement("p");
+      recentEp.innerText = `Episode ${anime.currentEpisodeCount}`;
+      recentEp.append(recentEpText);
       const card_image = document.createElement("div");
       card_image.classList.add("card-image");
       const figure = document.createElement("figure");
@@ -169,7 +180,7 @@ const searchAnimeData = async (inputData) => {
       img.src = anime.image;
       img.alt = anime.image;
       figure.appendChild(img);
-      card_image.appendChild(figure);
+      card_image.append(figure,recentEp);
       const container = document.createElement("div");
       container.classList.add("container");
       container.classList.add("is-fullhd");
@@ -219,10 +230,8 @@ searchBar.addEventListener("keydown", (e) => {
 //pagination for search anime
 next2.addEventListener("click", () => {
   page++;
-  console.log(page);
   card_layout.innerHTML = " ";
   searchAnimeData();
-  console.log(searchBar.value);
   searchBar.focus();
   const enterKeyEvent = new KeyboardEvent("keydown", { key: "Enter" });
   searchBar.dispatchEvent(enterKeyEvent);
@@ -234,7 +243,6 @@ prev2.addEventListener("click", (e) => {
     page--;
     card_layout.innerHTML = " ";
     searchAnimeData();
-    console.log(searchBar.value);
     searchBar.focus();
     const enterKeyEvent = new KeyboardEvent("keydown", { key: "Enter" });
     searchBar.dispatchEvent(enterKeyEvent);

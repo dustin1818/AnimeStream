@@ -24,7 +24,7 @@ btn_container.style.display = "none";
 
 const fetchAnime = async () => {
   try {
-    const data = await axios.get(`${url}?page=${page}`);
+    const data = await axios.get(`${url}?page=${page}&perPage=20`);
     console.log(data.data, page);
     const { results } = data.data;
     console.log(results);
