@@ -78,10 +78,12 @@
   </nav>
 
   <div class="video-container">
-    <button id="btn-back" onclick="goBack()" class="button is-link is-outlined">Go Back</button>
+    <div class="btn-container">
+      <button id="btn-back" onclick="goBack()" class="button is-link is-outlined">Go Back</button>
+      <button id="btn-next" class="button is-link is-outlined">Next Episode</button>
+    </div>
 
     <video id="video" controls></video>
-
     <div class="lower-container">
       <div class="quality-container">
         <h3 style="margin-bottom: 20px;">Update video quality here.</h3>

@@ -152,6 +152,7 @@ const getAnimeInfo = async () => {
         let anime_ep = anime_data.episodes;
         const ep_id = anime_ep[i - 0];
          localStorage.setItem("ep_id", JSON.stringify(ep_id));
+         localStorage.setItem('ep-list', JSON.stringify(anime_ep));
         location.href = "../stream-page/stream-page.html";
       });
       episode_div.append(btn);

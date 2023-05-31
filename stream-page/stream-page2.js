@@ -1,8 +1,10 @@
 //HLS VIDEO PLAYR WAS USED HERE
-'use strict';
+"use strict";
 
 const ep_id = JSON.parse(localStorage.getItem("ep_id"));
-console.log(ep_id)
+console.log(ep_id);
+const ep_list = JSON.parse(localStorage.getItem("ep-list"));
+const nextBtn = document.getElementById("btn-next");
 const nav = document.getElementById("nav");
 const nav_mobile = document.querySelector(".nav-mobile");
 nav.addEventListener("click", () => {
@@ -33,21 +35,21 @@ const getEp = async () => {
   Vidstreaming.addEventListener("click", () => {
     streamServerData.map((e) => {
       if(e.name === "Vidstreaming"){
-        window.open(e.url, '_blank');
+        window.open(e.url, "_blank");
       }
   });
 });
   GogoServer.addEventListener("click", () => {
     streamServerData.map((e) => {
       if(e.name === "Gogo server"){
-        window.open(e.url, '_blank');
+        window.open(e.url, "_blank");
       }
   });
   });
   Streamsb.addEventListener("click", () => {
     streamServerData.map((e) => {
       if(e.name === "Streamsb"){
-        window.open(e.url, '_blank');
+        window.open(e.url, "_blank");
       }
   });
   });
@@ -88,6 +90,30 @@ const getEp = async () => {
     autoQualityBtn.addEventListener("click", () => {
       hls.loadSource(autoQualityVid);
     });
+
+    let x = 0
+    let y = ''
+    nextBtn.addEventListener("click", () => {
+      console.log(ep_list);
+      const epNow = ep_list.find((animeEp) => animeEp.id === ep_id.id)
+      console.log(epNow);
+      const nextEP = epNow.number + 1;
+      ep_list.forEach((episodes) => {
+        if(nextEP === episodes.number){
+          let nextEpName = episodes.id;
+          const fetchSecondEp = async () => {
+            const { data } = await axios.get(
+              `https://api.consumet.org/meta/anilist/watch/${nextEpName}`
+            );
+            console.log(data.sources[3].url);
+            hls.loadSource(data.sources[3].url); 
+          }
+          fetchSecondEp();
+        }
+      })
+
+    })
+
     hls.loadSource(highQualityVid);
     hls.on(Hls.Events.MANIFEST_PARSED, function (event, data) {
       const availableQualities = hls.levels.map((l) => l.height);

@@ -55,14 +55,17 @@ body {
   padding: 30px 50px;
   gap: 20px;
 }
-/* 
+
 #video{
   height: 650px;
-} */
-
-#btn-back {
-  width: 90px;
 }
+
+.btn-container{
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
 
 .lower-container {
   display: flex;
