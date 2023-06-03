@@ -6,7 +6,7 @@ const next2 = document.getElementById("next2");
 const prev2 = document.getElementById("prev2");
 const card_layout = document.getElementById("card_wrapper");
 //api
-const url = "https://c.delusionz.xyz/meta/anilist/recent-episodes";
+const url = "https://api.consumet.org/meta/anilist/recent-episodes";
 let page = 1;
 //navbar
 const nav = document.getElementById("nav");
@@ -34,6 +34,10 @@ const subheading = document.querySelector(".subheading");
 const footer = document.querySelector(".footer");
 //carousel function
 const swiper = new Swiper(".mySwiper", {
+  navigation: {
+    nextEl: ".swiper-button-next",
+    prevEl: ".swiper-button-prev",
+  },
   scrollbar: {
     el: ".swiper-scrollbar",
     hide: true,
@@ -150,7 +154,7 @@ const getCard = (anime) => {
 const searchAnimeData = async (inputData) => {
   try {
     const getAnimeResult = await axios.get(
-      `https://c.delusionz.xyz/meta/anilist/${inputData}?page=${page}&perPage=21`
+      `https://api.consumet.org/meta/anilist/${inputData}?page=${page}&perPage=21`
     );
 
     const { results } = getAnimeResult.data;

@@ -5,6 +5,7 @@ const ep_id = JSON.parse(localStorage.getItem("ep_id"));
 console.log(ep_id);
 const ep_list = JSON.parse(localStorage.getItem("ep-list"));
 const nextBtn = document.getElementById("btn-next");
+const prevBtn = document.getElementById("btn-prev");
 const nav = document.getElementById("nav");
 const nav_mobile = document.querySelector(".nav-mobile");
 nav.addEventListener("click", () => {
@@ -28,93 +29,96 @@ const Vidstreaming = document.getElementById("Vidstreaming");
 const GogoServer = document.getElementById("GogoServer");
 const Streamsb = document.getElementById("Streamsb");
 
+//fetch episode function
 const getEp = async () => {
   let episodeName = ep_id.id;
-  let serverData = await axios.get(`https://c.delusionz.xyz/meta/anilist/servers/${episodeName}`);
+  console.log(episodeName);
+  let serverData = await axios.get(
+    `https://api.consumet.org/meta/anilist/servers/${episodeName}`
+  );
   let streamServerData = serverData.data;
   Vidstreaming.addEventListener("click", () => {
     streamServerData.map((e) => {
-      if(e.name === "Vidstreaming"){
+      if (e.name === "Vidstreaming") {
         window.open(e.url, "_blank");
       }
+    });
   });
-});
   GogoServer.addEventListener("click", () => {
     streamServerData.map((e) => {
-      if(e.name === "Gogo server"){
+      if (e.name === "Gogo server") {
         window.open(e.url, "_blank");
       }
-  });
+    });
   });
   Streamsb.addEventListener("click", () => {
     streamServerData.map((e) => {
-      if(e.name === "Streamsb"){
+      if (e.name === "Streamsb") {
         window.open(e.url, "_blank");
       }
-  });
+    });
   });
   const { data } = await axios.get(
     `https://api.consumet.org/meta/anilist/watch/${episodeName}`
   );
-  const lowQualityVid = data.sources[0].url;
-  const semilowQualityVid = data.sources[1].url;
-  const mediumQualityVid = data.sources[2].url;
-  const highQualityVid = data.sources[3].url;
-  const autoQualityVid = data.sources[4].url;
-  const video = document.getElementById("video");
   console.log(data);
+  for (const iterator of data.sources) {
+    console.log(iterator);
+  }
+
+  //find the quality and a condition that hides the button if the quality is not present
+  const lowQualityVid = data.sources.find(quality => quality.quality === "360p");
+  lowQualityVid ? lowQualityVid : lowQualityBtn.style.display = "none";
+  const semilowQualityVid = data.sources.find(quality => quality.quality === "480p");
+  semilowQualityVid ? semilowQualityVid : semilowQualityBtn.style.display = "none";
+  const mediumQualityVid = data.sources.find(quality => quality.quality === "720p");
+  mediumQualityVid ? mediumQualityVid : mediumQualityBtn.style.display = "none";
+  const highQualityVid = data.sources.find(quality => quality.quality === "1080p");
+  highQualityVid ? highQualityVid : highQualityBtn.style.display = "none";
+  const autoQualityVid = data.sources.find(quality => quality.quality === "default");
+  autoQualityVid ? autoQualityVid : autoQualityBtn.style.display = "none";
+  const video = document.getElementById("video");
   const defaultOptions = {};
   if (Hls.isSupported()) {
     const hls = new Hls();
     //360p
     lowQualityBtn.addEventListener("click", () => {
-      hls.loadSource(lowQualityVid);
+      hls.loadSource(lowQualityVid.url);
     });
 
     //480p
     semilowQualityBtn.addEventListener("click", () => {
-      hls.loadSource(semilowQualityVid);
+      hls.loadSource(semilowQualityVid.url);
     });
 
     //720p
     mediumQualityBtn.addEventListener("click", () => {
-      hls.loadSource(mediumQualityVid);
+      hls.loadSource(mediumQualityVid.url);
     });
 
     //1080p
     highQualityBtn.addEventListener("click", () => {
-      hls.loadSource(highQualityVid);
+      hls.loadSource(highQualityVid.url);
     });
 
     //auto
     autoQualityBtn.addEventListener("click", () => {
-      hls.loadSource(autoQualityVid);
+      hls.loadSource(autoQualityVid.url);
     });
 
-    let x = 0
-    let y = ''
-    nextBtn.addEventListener("click", () => {
-      console.log(ep_list);
-      const epNow = ep_list.find((animeEp) => animeEp.id === ep_id.id)
-      console.log(epNow);
-      const nextEP = epNow.number + 1;
-      ep_list.forEach((episodes) => {
-        if(nextEP === episodes.number){
-          let nextEpName = episodes.id;
-          const fetchSecondEp = async () => {
-            const { data } = await axios.get(
-              `https://api.consumet.org/meta/anilist/watch/${nextEpName}`
-            );
-            console.log(data.sources[3].url);
-            hls.loadSource(data.sources[3].url); 
-          }
-          fetchSecondEp();
-        }
-      })
+    //conditonal statement if there is no quality, choose other quality
+    if(highQualityVid){
+      hls.loadSource(highQualityVid.url);
+    }else if(mediumQualityVid){
+      hls.loadSource(mediumQualityVid.url);
+    }else if(semilowQualityVid){
+      hls.loadSource(semilowQualityVid.url);
+    }else if(lowQualityVid){
+      hls.loadSource(lowQualityVid.url);
+    }else if(autoQualityVid){
+      hls.loadSource(autoQualityVid.url);
+    }
 
-    })
-
-    hls.loadSource(highQualityVid);
     hls.on(Hls.Events.MANIFEST_PARSED, function (event, data) {
       const availableQualities = hls.levels.map((l) => l.height);
       defaultOptions.controls = [
@@ -156,3 +160,79 @@ const getEp = async () => {
 };
 
 getEp();
+
+let pageIncrementor = 1;
+nextBtn.addEventListener("click", async () => {
+  try{
+     // for episode number page
+  let text = ep_id.id;
+  let EpPage = text.substring(text.lastIndexOf("episode-") + "episode-".length);
+  console.log(`Current Page`, EpPage);
+  //for episode name
+  let text2 = ep_id.id;
+  let EpName = text2.substring(
+    0,
+    text2.lastIndexOf("episode-") + "episode-".length
+  );
+  pageIncrementor += Number(EpPage) ;
+  let pageString = pageIncrementor.toString();
+  const nextEpName = EpName + pageString
+  console.log("-------------")
+  const nextEpData = await getNextEpisode(nextEpName);
+  console.log(nextEpData);
+  localStorage.setItem("ep_id",JSON.stringify(nextEpData));
+  const storeNextEp = JSON.parse(localStorage.getItem("ep_id"));
+  console.log(storeNextEp);
+  window.location.reload();
+  getEp();
+  } catch(e) {
+    alert("There is no episode next");
+    console.log("Error",e);
+  }
+});
+
+const getNextEpisode = async (nextEpTitle) => {
+  const nextEpNameLink = nextEpTitle;
+  console.log(nextEpNameLink) 
+  const getNextEpData = await ep_list.find(episodeList => episodeList.id === nextEpNameLink);
+  return getNextEpData;
+}
+
+let pageDecrementor = 1;
+prevBtn.addEventListener("click", async () => {
+  try{
+     // for episode number page
+  let text = ep_id.id;
+  let EpPage = text.substring(text.lastIndexOf("episode-") + "episode-".length);
+  console.log(`Current Page`, EpPage);
+  //for episode name
+  let text2 = ep_id.id;
+  let EpName = text2.substring(
+    0,
+    text2.lastIndexOf("episode-") + "episode".length
+  );
+  pageDecrementor -= Number(EpPage) ;
+  let pageString = pageDecrementor.toString();
+  const nextEpName = EpName + pageString
+  console.log("-------------")
+  const nextEpData = await getPrevEpisode(nextEpName);
+  console.log(nextEpData);
+  localStorage.setItem("ep_id",JSON.stringify(nextEpData));
+  const storeNextEp = JSON.parse(localStorage.getItem("ep_id"));
+  console.log(storeNextEp);
+  window.location.reload();
+  getEp();
+  } catch(e) {
+    alert("There is no episode next");
+    console.log("Error",e);
+  }
+});
+
+const getPrevEpisode = async (nextEpTitle) => {
+  const nextEpNameLink = nextEpTitle;
+  console.log(nextEpNameLink) 
+  const getNextEpData = await ep_list.find(episodeList => episodeList.id === nextEpNameLink);
+  return getNextEpData;
+}
+
+

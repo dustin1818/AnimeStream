@@ -66,6 +66,9 @@ body {
   width: 100%;
 }
 
+#btn-next2{
+  display: none;
+}
 
 .lower-container {
   display: flex;
