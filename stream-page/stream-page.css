@@ -75,10 +75,22 @@ footer strong , footer a{
     height: 100%;
     padding: 30px 15px;
     gap: 30px;
+    margin-top: 75px;
   }
 
   #video{
     height: 100%;
+  }
+
+  .btn-container{
+    gap: 5px;
+  }
+
+  .btn2-container{
+    display: flex;
+    gap: 5px;
+    justify-content: center;
+    align-items: center;
   }
   
   .quality-container,
