@@ -196,7 +196,7 @@ prev.addEventListener("click", (e) => {
 //get anime details then linked to another page
 const getCard = (anime) => {
   localStorage.setItem("anime-info", JSON.stringify(anime));
-  window.location.href = "../anime-details/anime-details.html";
+  window.location.href = "./anime-details/anime-details.html";
 };
 
 //serach anime data

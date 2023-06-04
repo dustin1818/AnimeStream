@@ -5,7 +5,7 @@ class Navbar extends HTMLElement {
     this.innerHTML = `
         <nav class="navbar is-link p-4" role="navigation" aria-label="main navigation">
         <div class="navbar-brand" style="margin-right: 10px;">
-          <a class="navbar-item " href="../main/index.html">
+          <a class="navbar-item " href="../index.html">
             <p class="title has-text-white">
               Anime Stream
             </p>
@@ -19,7 +19,7 @@ class Navbar extends HTMLElement {
           </a>
     
           <div class="nav-mobile">
-            <a href="../main/index.html">
+            <a href="../index.html">
               Home
             </a>
     
@@ -38,7 +38,7 @@ class Navbar extends HTMLElement {
     
         <div id="navbarBasicExample" class="navbar-menu">
           <div class="navbar-start">
-            <a href="../main/index.html" class="navbar-item">
+            <a href="../index.html" class="navbar-item">
               Home
             </a>
     
