@@ -83,7 +83,11 @@ footer strong , footer a{
   }
 
   .btn-container{
-    gap: 5px;
+    justify-content: flex-start;
+  }
+
+  #btn-back{
+    margin-right:5px ;
   }
 
   .btn2-container{
