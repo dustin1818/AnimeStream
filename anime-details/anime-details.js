@@ -27,7 +27,7 @@ const footer = document.querySelector(".footer");
 
 
 const goBack = () => {
-  window.location.href = "../index.html";
+  window.location.href = "../main/index.html";
 };
 
 const getAnimeInfo = async () => {

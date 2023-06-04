@@ -8,42 +8,6 @@
   scroll-behavior: smooth;
   text-decoration: none;
 }
-.title{
-  font-size: 30px !important;
-}
-
-/* navbar mobile  */
-.nav-mobile {
-  display: none;
-}
-
-.nav-mobile-active {
-  display: block;
-  position: fixed;
-  height: 100vh;
-  z-index: 1;
-  background: #485fc7;
-  width: 100%;
-  left: 0;
-  top: 0;
-  bottom: 0;
-  right: 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 30px;
-}
-
-.nav-mobile-active a {
-  color: #ffffff;
-  font-weight: 600;
-  font-size: 30px;
-}
-
-.navbar-burger {
-  z-index: 2;
-}
 
 main {
   padding: 50px 30px;
@@ -200,14 +164,14 @@ main {
   display: flex;
 }
 
-.overlay{
+.overlay {
   position: relative;
 }
 
 .overlay::before {
   position: absolute;
   content: "";
-  background:rgba(141, 116, 255, 0.062);
+  background: #12131a;
   display: block;
   top: 0;
   left: 0;
@@ -215,30 +179,87 @@ main {
   width: 100%;
   opacity: 1;
   z-index: 1;
+  mix-blend-mode: multiply;
 }
 
-.swiper-slide img {
+.swiper-slide.overlay.swiper-slide-active img {
   position: relative;
   display: block;
   width: 100%;
   height: 100%;
-  object-fit: contain;
+  object-fit: cover;
   object-position: top center;
-  aspect-ratio: 1/1;
 }
 
-.swiper-button-next,.swiper-button-prev{
-  color:#485fc7 !important ;
+.swiper-button-next,
+.swiper-button-prev {
+  color: #485fc7 !important ;
+  z-index: 5;
 }
 
-.swiper-scrollbar{
-  background:#485fc7 !important;
+.swiper-scrollbar {
+  background: #485fc7 !important;
 }
-.swiper-scrollbar-drag{
-  background:#98abff !important;
+.swiper-scrollbar-drag {
+  background: #98abff !important;
 }
 
-.carousel_text{
+.carousel-wrapper {
+  position: absolute;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  width: 90%;
+  flex-wrap: wrap;
+}
+
+.carousel-leftDiv {
+  position: relative;
+}
+
+.imageLeftDiv {
+  height: 350px;
+  border: 4px solid #98abff;
+  border-radius: 15px;
+}
+
+.imageLeftDiv img {
+  border-radius: 9px;
+  object-fit: cover;
+}
+
+.carousel-leftDiv p {
+  position: absolute;
+  top: 15px;
+  right: 0;
+  font-size: 14px;
+  color: white;
+  background: #485fc7;
+  border-radius: 1px;
+  padding: 8px;
+  text-align: center;
+}
+
+.carousel-rightDiv {
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-left: 40px;
+  gap: 20px;
+}
+
+.carousel_description,
+.typeAnime {
+  color: white;
+  font-weight: 500;
+  max-width: 850px;
+}
+
+.button_carousel {
+  font-weight: 600;
+}
+.carousel_text {
   position: absolute;
   color: #ffffff;
   z-index: 2;
@@ -250,6 +271,36 @@ main {
   background: #485fc7 !important;
   padding: 20px;
   border-radius: 4px;
+}
+
+.autoplay-progress {
+  position: absolute;
+  right: 16px;
+  bottom: 16px;
+  z-index: 10;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  color: white;
+}
+
+.autoplay-progress svg {
+  --progress: 0;
+  position: absolute;
+  left: 0;
+  top: 0px;
+  z-index: 10;
+  width: 100%;
+  height: 100%;
+  stroke-width: 4px;
+  stroke: white;
+  fill: none;
+  stroke-dashoffset: calc(125.6 * (1 - var(--progress)));
+  stroke-dasharray: 125.6;
+  transform: rotate(-90deg);
 }
 
 /* searchbar  */
@@ -280,7 +331,7 @@ main {
   border-radius: 8px;
   outline: none;
   background-color: #f3f3f4;
-  color: #5f5c5c !important;
+  color: #3f3f3f !important;
   padding-left: 40px !important;
   transition: 0.3s ease;
   font-family: "Poppins", sans-serif;
@@ -318,7 +369,7 @@ main {
   display: none;
 }
 
-.subheading{
+.subheading {
   display: none;
   font-size: 28px;
   margin: 0 auto 50px auto;
@@ -329,8 +380,8 @@ main {
   max-width: fit-content;
 }
 
-.subheading::before{
-  content: '';
+.subheading::before {
+  content: "";
   position: absolute;
   bottom: 0;
   width: 23px;
@@ -343,23 +394,23 @@ main {
   transform: rotate(90deg);
 }
 
-
 /* anime grid layout  */
 .card_wrapper {
   display: grid;
-  grid-template-columns: repeat(7,1fr);
+  grid-template-columns: repeat(7, 1fr);
   gap: 20px;
 }
 
-.card{
+.card {
   background: transparent !important;
-  border-radius: 100px !important; 
+  border-radius: 100px !important;
   box-shadow: none !important;
 }
 .img_card {
   width: 100%;
   object-fit: cover;
   object-position: top center;
+  cursor: pointer;
 }
 .img_card:hover {
   transition: 0.3s all ease-in-out;
@@ -375,7 +426,7 @@ main {
   position: relative;
 }
 
-.recent-episode-container{
+.recent-episode-container {
   position: absolute;
   top: 15px;
   z-index: 1;
@@ -400,10 +451,10 @@ main {
   padding: 10px !important;
 }
 
-.notification.is-link p{
+.notification.is-link p {
   font-weight: 500;
   font-size: 14px;
-  color: #383737;
+  color: #3f3f3f;
   width: 100%;
 }
 
@@ -430,16 +481,17 @@ footer a {
     width: 100%;
   }
 
-  .subheading{
+  .subheading {
     margin: 50px 20px;
   }
 
-  .swiper-slide img{
+  .swiper-slide img {
     object-fit: cover;
   }
 
-  .swiper-button-next,.swiper-button-prev{
-    color:white !important ;
+  .swiper-button-next,
+  .swiper-button-prev {
+    color: white !important ;
   }
 
   .card_wrapper {
@@ -456,16 +508,15 @@ footer a {
     padding: 10px;
   }
 
-  .container.is-fullhd{
-    width: auto; 
+  .container.is-fullhd {
+    width: auto;
     font-size: 14px;
     padding: 0 10px;
   }
 
-  .carousel_text{
+  .carousel_text {
     font-size: 20px;
   }
-  
 }
 
 @media screen and (max-width: 450px) {
@@ -477,6 +528,42 @@ footer a {
     padding: 20px;
   }
 
+  .carousel-container {
+    height: 100vh;
+  }
+
+  .swiper-slide.overlay.swiper-slide-active {
+    width: 100%;
+  }
+
+  .carousel-wrapper {
+    justify-content: center;
+    gap: 20px;
+  }
+
+  .carousel-leftDiv {
+    width: 76%;
+  }
+  .imageLeftDiv {
+    height: 300px;
+  }
+  .carousel-rightDiv {
+    flex-wrap: wrap;
+    margin-left: 0;
+    width: 100%;
+  }
+
+  .carousel_text {
+    font-size: 18px;
+    font-weight: 600;
+  }
+
+  .autoplay-progress{
+    right: 15px !important;
+    bottom: 9px !important;
+    background:#485fc7 ;
+    z-index: 3;
+  }
   .upper-container {
     display: flex;
     flex-direction: column;
@@ -488,11 +575,11 @@ footer a {
     justify-content: center;
   }
 
-  .subheading{
+  .subheading {
     font-size: 25px;
   }
 
-  .subheading::before{
+  .subheading::before {
     left: -18px;
     top: 22px;
   }
@@ -509,9 +596,5 @@ footer a {
     > p {
       font-size: 11px;
     }
-  }
-
-  .carousel_text{
-    font-size: 18px;
   }
 }

@@ -8,43 +8,6 @@
   scroll-behavior: smooth;
 }
 
-.title{
-  font-size: 30px !important;
-}
-
-
-.nav-mobile {
-  display: none;
-}
-
-.nav-mobile-active {
-  display: block;
-  position: fixed;
-  height: 100vh;
-  z-index: 1;
-  background: #485fc7;
-  width: 100%;
-  left: 0;
-  top: 0;
-  bottom: 0;
-  right: 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 30px;
-}
-
-.nav-mobile-active a {
-  color: #ffffff;
-  font-weight: 600;
-  font-size: 30px;
-}
-
-.navbar-burger {
-  z-index: 2;
-}
-
 main{
   padding: 40px;
 }
@@ -269,10 +232,6 @@ footer strong , footer a{
 }
 
 @media screen and (max-width: 450px) {
-  .navbar-item p {
-    font-size: 28px;
-  }
-
   .title2 {
     margin-top: 30px;
     font-size: 30px !important;

@@ -33,6 +33,8 @@ const subheading = document.querySelector(".subheading");
 //footer container
 const footer = document.querySelector(".footer");
 //carousel function
+const progressCircle = document.querySelector(".autoplay-progress svg");
+const progressContent = document.querySelector(".autoplay-progress span");
 const swiper = new Swiper(".mySwiper", {
   navigation: {
     nextEl: ".swiper-button-next",
@@ -42,9 +44,15 @@ const swiper = new Swiper(".mySwiper", {
     el: ".swiper-scrollbar",
     hide: true,
   },
-    autoplay: {
-    delay: 3000,
+  autoplay: {
+    delay: 2800,
     disableOnInteraction: false,
+  },
+  on: {
+    autoplayTimeLeft(s, time, progress) {
+      progressCircle.style.setProperty("--progress", 1 - progress);
+      progressContent.textContent = `${Math.ceil(time / 1000)}s`;
+    },
   },
 });
 
@@ -62,23 +70,64 @@ const fetchAnime = async () => {
     btn_container.style.display = "flex";
     for (let i = 4; i <= 12; i++) {
       //carousel add image
+      console.log(results[i]);
       const carousel_image = document.createElement("img");
-      carousel_image.classList
       carousel_image.src = results[i].image;
+      carousel_image.alt = results[i].image;
+
+      const carousel_inner_wrapper = document.createElement("div");
+      carousel_inner_wrapper.classList.add("carousel-wrapper");
+      //left div
+      const carousel_left_div = document.createElement("div");
+      carousel_left_div.classList.add("carousel-leftDiv");
+      const imageLeftDiv =  document.createElement("div");
+      imageLeftDiv.classList.add("imageLeftDiv");
+      const imageLeft = document.createElement("img");
+      imageLeft.src = results[i].image;
+      imageLeft.alt = results[i].image;
+      imageLeftDiv.append(imageLeft);
+      const imageEpisodeTitle = document.createElement("p");
+      imageEpisodeTitle.innerText = `Episode: ${results[i].episodeNumber}`;
+      carousel_left_div.append(imageLeftDiv,imageEpisodeTitle)
+     //right div
+      const carousel_right_div = document.createElement("div");
+      carousel_right_div.classList.add("carousel-rightDiv");
+      const episode_description = document.createElement("p");
+      episode_description.innerText = `Episode Title: ${results[i].episodeTitle}`;
+      episode_description.classList.add("carousel_description");
+      const button_carousel = document.createElement("button");
+      button_carousel.innerHTML = "Check Anime";
+      button_carousel.classList.add("button_carousel");
+      button_carousel.classList.add("button");
+      button_carousel.classList.add("is-link");
+      button_carousel.addEventListener("click", () => {
+        getCard(results[i]);
+      })
+      const typeAnime = document.createElement("p");
+      typeAnime.classList.add("typeAnime");
+      typeAnime.innerText = `Type: ${results[i].type}`;
+      carousel_right_div.append(episode_description, button_carousel, typeAnime);
+
+      carousel_inner_wrapper.append(carousel_left_div,carousel_right_div);
+      //bottom text
       const carousel_text = document.createElement("h2");
       carousel_text.classList.add("carousel_text");
-      carousel_text.innerText = results[i].title.english ? `${results[i].title.english}` : `${results[i].title.userPreferred}`;
+      carousel_text.innerText = results[i].title.english
+        ? `${results[i].title.english}`
+        : `${results[i].title.userPreferred}`;
       const swiper_wrapper = document.querySelector(".swiper-wrapper");
       const swiper_slide = document.createElement("div");
       swiper_slide.classList.add("swiper-slide");
       swiper_slide.classList.add("overlay");
-      swiper_slide.append(carousel_image,carousel_text);
+      // append all
+      swiper_slide.append(carousel_image, carousel_text,carousel_inner_wrapper);
       swiper_wrapper.append(swiper_slide);
     }
     results.forEach((anime) => {
       //recent anime
-      console.log(anime);
-      const checkAnimeTitle = anime.title.english ? `${anime.title.english}` : `${anime.title.userPreferred}`;
+      const checkAnimeTitle = anime.title.english
+        ? `${anime.title.english}`
+        : `${anime.title.userPreferred}`;
       const card = document.createElement("div");
       card.classList.add("card");
       const recentEp = document.createElement("div");
@@ -96,7 +145,7 @@ const fetchAnime = async () => {
       img.src = anime.image;
       img.alt = anime.image;
       figure.appendChild(img);
-      card_image.append(figure,recentEp);
+      card_image.append(figure, recentEp);
       const container = document.createElement("div");
       container.classList.add("container");
       container.classList.add("is-fullhd");
@@ -147,7 +196,7 @@ prev.addEventListener("click", (e) => {
 //get anime details then linked to another page
 const getCard = (anime) => {
   localStorage.setItem("anime-info", JSON.stringify(anime));
-  window.location.href = "./anime-details/anime-details.html";
+  window.location.href = "../anime-details/anime-details.html";
 };
 
 //serach anime data
@@ -163,10 +212,12 @@ const searchAnimeData = async (inputData) => {
     search_container.style.display = "flex";
     btn_container.style.display = "flex";
     subheading.style.display = "flex";
-    subheading.innerText = "Search Results"
+    subheading.innerText = "Search Results";
     results.forEach((anime) => {
       console.log(anime);
-      const checkAnimeTitle = anime.title.english ? `${anime.title.english}` : `${anime.title.userPreferred}`;
+      const checkAnimeTitle = anime.title.english
+        ? `${anime.title.english}`
+        : `${anime.title.userPreferred}`;
       const card = document.createElement("div");
       card.classList.add("card");
       const recentEp = document.createElement("div");
@@ -184,7 +235,7 @@ const searchAnimeData = async (inputData) => {
       img.src = anime.image;
       img.alt = anime.image;
       figure.appendChild(img);
-      card_image.append(figure,recentEp);
+      card_image.append(figure, recentEp);
       const container = document.createElement("div");
       container.classList.add("container");
       container.classList.add("is-fullhd");

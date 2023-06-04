@@ -7,76 +7,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Anime Stream</title>
   <link rel="stylesheet" href="./stream-page.css">
+  <link rel="stylesheet" href="../navbar/navbar.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
   <link rel="stylesheet" href="https://cdn.plyr.io/3.7.8/plyr.css" />
 </head>
 
 <body>
-  <nav class="navbar is-link p-4" role="navigation" aria-label="main navigation">
-    <div class="navbar-brand" style="margin-right: 10px;">
-      <a class="navbar-item " href="../index.html">
-        <p class="title has-text-white">
-          Anime Stream
-        </p>
-      </a>
-
-      <a role="button" id="nav" class="navbar-burger" aria-label="menu" aria-expanded="false"
-        data-target="navbarBasicExample">
-        <span aria-hidden="true"></span>
-        <span aria-hidden="true"></span>
-        <span aria-hidden="true"></span>
-      </a>
-
-      <div class="nav-mobile">
-        <a href="../index.html">
-          Home
-        </a>
-
-        <a href="../top-airing/top-airing.html">
-          Top Airing
-        </a>
-        <a href="../popular/popular.html">
-          Popular
-        </a>
-        <a href="../movies/movies.html">
-          Movies
-        </a>
-      </div>
-    </div>
-
-    <div id="navbarBasicExample" class="navbar-menu">
-      <div class="navbar-start">
-        <a href="../index.html" class="navbar-item">
-          Home
-        </a>
-
-        <a href="../top-airing/top-airing.html" class="navbar-item">
-          Top Airing
-        </a>
-
-        <a href="../popular/popular.html" class="navbar-item">
-          Popular
-        </a>
-        <a href="../movies/movies.html" class="navbar-item">
-          Movies
-        </a>
-      </div>
-
-      <div class="navbar-end">
-        <div class="navbar-item">
-          <div class="buttons">
-            <a class="button is-link" disabled>
-              <strong>Sign up</strong>
-            </a>
-            <a class="button is-light" disabled>
-              Log in
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </nav>
-
+  <app-navbar></app-navbar>
   <div class="video-container">
     <div class="btn-container">
       <button id="btn-back" onclick="goBack()" class="button is-link is-outlined">Go Back</button>
@@ -118,6 +55,7 @@
   <script src="https://cdn.jsdelivr.net/npm/hls.js@1"></script>
   <script src="https://cdn.plyr.io/3.7.8/plyr.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="../navbar/navbar.js"></script>
   <script src="./stream-page2.js"></script>
 </body>
 
