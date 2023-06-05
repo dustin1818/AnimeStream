@@ -17,7 +17,7 @@ body {
   height: 100%;
   width: 100%;
   padding: 30px 50px;
-  gap: 20px;
+  gap: 30px;
 }
 
 #video{
@@ -46,6 +46,28 @@ body {
   gap: 10px;
 }
 
+.ep-info-container{
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 40px;
+  >#episode-image{
+    height: 250px;
+    border-radius: 5px;
+    border: solid 2px #485fc7;
+  }
+
+  .right{
+    display: flex;
+    flex-direction:column ;
+    gap: 10px;
+    font-size: 18px;
+    >#episode-title{
+      font-weight: 600;
+    }
+  }
+}
+
 footer{
   position: relative;
   bottom: 0;
@@ -62,7 +84,7 @@ footer strong , footer a{
 @media screen and (max-width: 1020px) {
   .lower-container {
     height: auto;
-    gap: 40px;
+    gap: 30px;
   }
 
   #video{
@@ -75,7 +97,7 @@ footer strong , footer a{
     height: 100%;
     padding: 30px 15px;
     gap: 30px;
-    margin-top: 75px;
+    margin-top: 80px;
   }
 
   #video{
@@ -115,6 +137,23 @@ footer strong , footer a{
   .plyr__controls__item.plyr__control */
   {
     display: none;
+  }
+
+  .ep-info-container{
+    gap: 20px;
+  }
+
+  .ep-info-container >#episode-image  {
+    height: 180px !important;
+  }
+
+  & .right{
+    margin-left: 0 !important;
+    font-size: 16px !important;
+  }
+
+  & >#episode-title, #episode-description {
+    font-weight: 400 !important;
   }
   
 

@@ -15,12 +15,15 @@
 <body>
   <app-navbar></app-navbar>
   <div class="video-container">
+    <div id="progress-bar">
+      <div class="bar"></div>
+    </div>
     <div class="btn-container">
       <button id="btn-back" onclick="goBack()" class="button is-link is-outlined">Go Back</button>
       <div class="btn2-container">
-      <button id="btn-prev" class="button is-link is-outlined">Prev Episode</button>
-      <button id="btn-next" class="button is-link is-outlined">Next Episode</button>
-    </div>
+        <button id="btn-prev" class="button is-link is-outlined">Prev Episode</button>
+        <button id="btn-next" class="button is-link is-outlined">Next Episode</button>
+      </div>
     </div>
 
     <video id="video" controls></video>
@@ -41,12 +44,21 @@
         <button id="Streamsb" class="button is-link is-outlined">Streamsb</button>
       </div>
     </div>
+
+    <div class="ep-info-container">
+      <img src="" id="episode-image"></img>
+      <div class="right">
+        <h2 id="episode-title"></h2>
+        <h2 id="episode-description"></h2>
+      </div>
+    </div>
   </div>
 
   <footer class="footer p-5">
     <div class="content has-text-centered">
       <p>
-        <strong><a href="#">Anime Stream</a></strong> Stream for free without ads! The source code is by <a target="_blank" href="https://github.com/dustin1818">Dustin</a>. Credits to c.delusion for the api.
+        <strong><a href="#">Anime Stream</a></strong> Stream for free without ads! The source code is by <a
+          target="_blank" href="https://github.com/dustin1818">Dustin</a>. Credits to c.delusion for the api.
       </p>
     </div>
   </footer>

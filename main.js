@@ -56,6 +56,93 @@ const swiper = new Swiper(".mySwiper", {
   },
 });
 
+
+document.getElementById("progress-bar").style.display = "block";
+let progressBar = document.querySelector("#progress-bar .bar");
+let width = 0;
+  // Show the progress bar
+function redirectToAnotherPage() {
+  let intervalId = setInterval(frame, 10);
+  function frame() {
+    if (width >= 100) {
+      clearInterval(intervalId);
+      window.location.href = "./index.html";
+    } else {
+      width++;
+      progressBar.style.width = width + "%";
+    }
+  }
+}
+function redirectToAnotherPage2() {
+  let intervalId = setInterval(frame, 10);
+  function frame() {
+    if (width >= 100) {
+      // Redirect to another page when the progress reaches 100%
+      clearInterval(intervalId);
+      window.location.href = "./top-airing/top-airing.html";
+      
+    } else {
+      width++;
+      progressBar.style.width = width + "%";
+    }
+  }
+}
+function redirectToAnotherPage3() {
+  let intervalId = setInterval(frame, 10);
+  function frame() {
+    if (width >= 100) {
+      // Redirect to another page when the progress reaches 100%
+      clearInterval(intervalId);
+      window.location.href = "./popular/popular.html";
+    } else {
+      width++;
+      progressBar.style.width = width + "%";
+    }
+  }
+}
+function redirectToAnotherPage4() {
+  let intervalId = setInterval(frame, 10);
+  function frame() {
+    if (width >= 100) {
+      // Redirect to another page when the progress reaches 100%
+      clearInterval(intervalId);
+      window.location.href = "./movies/movies.html";
+    } else {
+      width++;
+      progressBar.style.width = width + "%";
+    }
+  }
+}
+function redirectToAnotherPage5() {
+  let intervalId = setInterval(frame, 10);
+  function frame() {
+    if (width >= 100) {
+      // Redirect to another page when the progress reaches 100%
+      clearInterval(intervalId);
+      window.open("https://anilist.co/signup",'_blank')
+      window.location.reload();
+    } else {
+      width++;
+      progressBar.style.width = width + "%";
+    }
+  }
+}
+function redirectToAnotherPage6() {
+  let intervalId = setInterval(frame, 10);
+  function frame() {
+    if (width >= 100) {
+      // Redirect to another page when the progress reaches 100%
+      clearInterval(intervalId);
+      window.open("https://anilist.co/login",'_blank')
+      window.location.reload();
+    } else {
+      width++;
+      progressBar.style.width = width + "%";
+    }
+  }
+}
+
+
 //get anime
 const fetchAnime = async () => {
   try {
@@ -195,8 +282,18 @@ prev.addEventListener("click", (e) => {
 
 //get anime details then linked to another page
 const getCard = (anime) => {
-  localStorage.setItem("anime-info", JSON.stringify(anime));
-  window.location.href = "./anime-details/anime-details.html";
+  let intervalId = setInterval(frame, 10);
+  function frame() {
+    if (width >= 100) {
+      // Redirect to another page when the progress reaches 100%
+      clearInterval(intervalId);
+      localStorage.setItem("anime-info", JSON.stringify(anime));
+      window.location.href = "./anime-details/anime-details.html";
+    } else {
+      width++;
+      progressBar.style.width = width + "%";
+    }
+  }
 };
 
 //serach anime data

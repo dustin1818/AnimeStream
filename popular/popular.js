@@ -6,14 +6,6 @@ const card_layout = document.getElementById("card_wrapper");
 const url = "https://api.consumet.org/meta/anilist/advanced-search?type=ANIME&format=TV";
 let page = 1;
 
-const nav = document.getElementById('nav');
-const nav_mobile = document.querySelector('.nav-mobile');
-nav.addEventListener('click', () => {
-  nav.classList.toggle('is-active');
-  nav_mobile.classList.toggle('nav-mobile-active');
-})
-
-
 const loader_container = document.querySelector(".loader-container");
 const loader = document.querySelector(".three-body");
 loader_container.style.display = "flex";

@@ -30,18 +30,18 @@
       </a>
 
       <div class="nav-mobile">
-        <a href="./index.html">
+        <a onclick = "redirectToAnotherPage()">
           Home
         </a>
 
-        <a href="./top-airing/top-airing.html">
+        <a onclick = "redirectToAnotherPage2()">
           Top Airing
         </a>
 
-        <a href="./popular/popular.html">
+        <a onclick = "redirectToAnotherPage3()">
           Popular
         </a>
-        <a href="./movies/movies.html">
+        <a onclick = "redirectToAnotherPage4()">
           Movies
         </a>
       </div>
@@ -49,19 +49,19 @@
 
     <div id="navbarBasicExample" class="navbar-menu">
       <div class="navbar-start">
-        <a href="./index.html" class="navbar-item">
+        <a class="navbar-item" onclick = "redirectToAnotherPage()">
           Home
         </a>
 
-        <a href="./top-airing/top-airing.html" class="navbar-item">
+        <a class="navbar-item" onclick = "redirectToAnotherPage2()">
           Top Airing
         </a>
 
-        <a href="./popular/popular.html" class="navbar-item">
+        <a class="navbar-item" onclick = "redirectToAnotherPage3()">
           Popular
         </a>
 
-        <a href="./movies/movies.html" class="navbar-item">
+        <a class="navbar-item" onclick = "redirectToAnotherPage4()">
           Movies
         </a>
       </div>
@@ -69,10 +69,10 @@
       <div class="navbar-end">
         <div class="navbar-item">
           <div class="buttons">
-            <a class="button  is-link" href ="https://anilist.co/signup" target="_blank">
+            <a class="button  is-link"onclick = "redirectToAnotherPage5()">
               <strong>Sign up</strong>
             </a>
-            <a class="button is-light" href="https://anilist.co/login" target="_blank">
+            <a class="button is-light" onclick = "redirectToAnotherPage6()">
               Log in
             </a>
           </div>
@@ -80,6 +80,10 @@
       </div>
     </div>
   </nav>
+  <div id="progress-bar">
+    <div class="bar"></div>
+  </div>
+
   <section class="carousel-container">
     <div class="swiper mySwiper">
       <div class="swiper-wrapper">

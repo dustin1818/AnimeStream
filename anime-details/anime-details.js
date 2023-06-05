@@ -5,13 +5,6 @@ const anime_info = JSON.parse(localStorage.getItem("anime-info"));
 const anime_div = document.getElementById("anime_div");
 const episode_div = document.getElementById("list-ep");
 
-const nav = document.getElementById("nav");
-const nav_mobile = document.querySelector(".nav-mobile");
-nav.addEventListener("click", () => {
-  nav.classList.toggle("is-active");
-  nav_mobile.classList.toggle("nav-mobile-active");
-});
-
 const loader_container = document.querySelector(".loader-container");
 const loader = document.querySelector(".three-body");
 loader_container.style.display = "flex";
@@ -25,9 +18,22 @@ hr.style.display = "none";
 
 const footer = document.querySelector(".footer");
 
+document.getElementById("progress-bar").style.display = "none";
 
 const goBack = () => {
-  window.location.href = "../index.html";
+  document.getElementById("progress-bar").style.display = "block";
+  let progressBar = document.querySelector("#progress-bar .bar");
+  let width = 0;
+  let intervalId = setInterval(frame, 10);
+  function frame() {
+    if (width >= 100) {
+      clearInterval(intervalId);
+      window.location.href = "../index.html";
+    } else {
+      width++;
+      progressBar.style.width = width + "%";
+    }
+  }
 };
 
 const getAnimeInfo = async () => {
@@ -149,11 +155,23 @@ const getAnimeInfo = async () => {
       btn.classList.add("is-outlined");
       btn.innerText = `Episode ${anime_data.episodes[i].number}`;
       btn.addEventListener("click", () => {
-        let anime_ep = anime_data.episodes;
-        const ep_id = anime_ep[i - 0];
-         localStorage.setItem("ep_id", JSON.stringify(ep_id));
-         localStorage.setItem('ep-list', JSON.stringify(anime_ep));
-        location.href = "../stream-page/stream-page.html";
+        document.getElementById("progress-bar").style.display = "block";
+        let progressBar = document.querySelector("#progress-bar .bar");
+        let width = 0;
+        let intervalId = setInterval(frame, 10);
+        function frame() {
+          if (width >= 100) {
+            clearInterval(intervalId);
+            let anime_ep = anime_data.episodes;
+            const ep_id = anime_ep[i - 0];
+             localStorage.setItem("ep_id", JSON.stringify(ep_id));
+             localStorage.setItem('ep-list', JSON.stringify(anime_ep));
+            location.href = "../stream-page/stream-page.html";
+          } else {
+            width++;
+            progressBar.style.width = width + "%";
+          }
+        }
       });
       episode_div.append(btn);
     }
