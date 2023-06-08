@@ -10,7 +10,6 @@ const loader = document.querySelector(".three-body");
 loader_container.style.display = "flex";
 loader.style.display = "inline-block";
 
-const btn_container = document.querySelector(".btn-container");
 btn_container.style.display = "none";
 
 const fetchAnime = async () => {

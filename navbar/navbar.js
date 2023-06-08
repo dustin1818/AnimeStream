@@ -3,6 +3,8 @@
 const subheading = document.querySelector(".subheading");
 const card_layout = document.getElementById("card_wrapper");
 const footer = document.querySelector(".footer");
+const btn_container = document.querySelector(".btn-container");
+
 
 class Navbar extends HTMLElement {
   connectedCallback() {
@@ -250,6 +252,7 @@ searchBar.addEventListener("keydown", (e) => {
     e.preventDefault();
     let searchValue = searchBar.value.trim();
     footer.style.display = "none";
+    btn_container.style.display = "none";
     if (searchValue.length === 0) {
       alert("Please enter a value..");
     } else {
