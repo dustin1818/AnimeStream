@@ -13,6 +13,9 @@ const episodeImage = document.getElementById("episode-image");
 const episodeTitle = document.getElementById("episode-title");
 const episodeSynopsis = document.getElementById("episode-description");
 
+const loader_container = document.querySelector(".loader-container");
+const loader = document.querySelector(".three-body");
+
 const goBack = () => {
   document.getElementById("progress-bar").style.display = "block";
   let progressBar = document.querySelector("#progress-bar .bar");
@@ -48,6 +51,7 @@ const Streamsb = document.getElementById("Streamsb");
 
 //fetch episode function
 const getEp = async () => {
+  footer.style.display = "block"
   let episodeName = ep_id.id;
   console.log(episodeName);
   let serverData = await axios.get(

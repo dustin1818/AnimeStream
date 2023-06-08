@@ -300,7 +300,7 @@ const getCard = (anime) => {
 const searchAnimeData = async (inputData) => {
   try {
     const getAnimeResult = await axios.get(
-      `https://api.consumet.org/meta/anilist/${inputData}?page=${page}&perPage=21`
+      `https://api.consumet.org/meta/anilist/${inputData}?page=${page}&perPage=100`
     );
 
     const { results } = getAnimeResult.data;
@@ -373,30 +373,7 @@ searchBar.addEventListener("keydown", (e) => {
       subheading.style.display = "none";
       card_layout.innerHTML = " ";
       searchAnimeData(searchValue);
-      next2.style.display = "flex";
-      prev2.style.display = "flex";
     }
   }
 });
 
-//pagination for search anime
-next2.addEventListener("click", () => {
-  page++;
-  card_layout.innerHTML = " ";
-  searchAnimeData();
-  searchBar.focus();
-  const enterKeyEvent = new KeyboardEvent("keydown", { key: "Enter" });
-  searchBar.dispatchEvent(enterKeyEvent);
-});
-prev2.addEventListener("click", (e) => {
-  if (page === 1) {
-    e.preventDefault();
-  } else {
-    page--;
-    card_layout.innerHTML = " ";
-    searchAnimeData();
-    searchBar.focus();
-    const enterKeyEvent = new KeyboardEvent("keydown", { key: "Enter" });
-    searchBar.dispatchEvent(enterKeyEvent);
-  }
-});

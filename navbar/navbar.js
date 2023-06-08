@@ -1,5 +1,9 @@
 "use strict";
 
+const subheading = document.querySelector(".subheading");
+const card_layout = document.getElementById("card_wrapper");
+const footer = document.querySelector(".footer");
+
 class Navbar extends HTMLElement {
   connectedCallback() {
     this.innerHTML = `
@@ -59,6 +63,16 @@ class Navbar extends HTMLElement {
           </div>
     
           <div class="navbar-end">
+          <div class="group">
+          <svg class="icon" aria-hidden="true" viewBox="0 0 24 24">
+            <g>
+              <path
+                d="M21.53 20.47l-3.66-3.66C19.195 15.24 20 13.214 20 11c0-4.97-4.03-9-9-9s-9 4.03-9 9 4.03 9 9 9c2.215 0 4.24-.804 5.808-2.13l3.66 3.66c.147.146.34.22.53.22s.385-.073.53-.22c.295-.293.295-.767.002-1.06zM3.5 11c0-4.135 3.365-7.5 7.5-7.5s7.5 3.365 7.5 7.5-3.365 7.5-7.5 7.5-7.5-3.365-7.5-7.5z">
+              </path>
+            </g>
+          </svg>
+          <input id="search" placeholder="Search" type="search" name="search" class="input" required aria-required="true">
+        </div>
             <div class="navbar-item">
               <div class="buttons">
                 <a id="signup" class="button is-link" target="_blank" onclick = "redirectToAnotherPage5()">
@@ -89,7 +103,7 @@ nav.addEventListener("click", () => {
 document.getElementById("progress-bar").style.display = "block";
 let progressBar = document.querySelector("#progress-bar .bar");
 let width = 0;
-  // Show the progress bar
+// Show the progress bar
 function redirectToAnotherPage() {
   let intervalId = setInterval(frame, 10);
   function frame() {
@@ -109,7 +123,6 @@ function redirectToAnotherPage2() {
       // Redirect to another page when the progress reaches 100%
       clearInterval(intervalId);
       window.location.href = "../top-airing/top-airing.html";
-      
     } else {
       width++;
       progressBar.style.width = width + "%";
@@ -148,10 +161,12 @@ function redirectToAnotherPage5() {
     if (width >= 100) {
       // Redirect to another page when the progress reaches 100%
       clearInterval(intervalId);
-      window.open("https://anilist.co/signup","_blank")
+      window.open("https://anilist.co/signup", "_blank");
+      window.location.reload();
     } else {
       width++;
       progressBar.style.width = width + "%";
+      window.location.reload();
     }
   }
 }
@@ -161,7 +176,7 @@ function redirectToAnotherPage6() {
     if (width >= 100) {
       // Redirect to another page when the progress reaches 100%
       clearInterval(intervalId);
-      window.open("https://anilist.co/login","_blank")
+      window.open("https://anilist.co/login", "_blank");
       window.location.reload();
     } else {
       width++;
@@ -170,3 +185,87 @@ function redirectToAnotherPage6() {
     }
   }
 }
+
+
+//serach anime data
+const searchAnimeData = async (inputData) => {
+  try {
+    const getAnimeResult = await axios.get(
+      `https://api.consumet.org/meta/anilist/${inputData}?page=1&perPage=100`
+    );
+
+    const { results } = getAnimeResult.data;
+    loader_container.style.display = "none";
+    loader.style.display = "none";
+    card_layout.style.display = "grid";
+    // search_container.style.display = "flex";
+    // subheading.innerText = subheading ? "Search Results" : ""; 
+    results.forEach((anime) => {
+      console.log(anime);
+      const checkAnimeTitle = anime.title.english
+        ? `${anime.title.english}`
+        : `${anime.title.userPreferred}`;
+      const card = document.createElement("div");
+      card.classList.add("card");
+      const card_image = document.createElement("div");
+      card_image.classList.add("card-image");
+      const figure = document.createElement("figure");
+      figure.classList.add("image");
+      figure.classList.add("is-4by3");
+      const img = document.createElement("img");
+      img.classList.add("img_card");
+      img.src = anime.image;
+      img.alt = anime.image;
+      figure.appendChild(img);
+      card_image.append(figure);
+      const container = document.createElement("div");
+      container.classList.add("container");
+      container.classList.add("is-fullhd");
+      const notification = document.createElement("div");
+      notification.classList.add("notification");
+      notification.classList.add("is-link");
+      const p = document.createElement("p");
+      p.innerText = checkAnimeTitle;
+      notification.appendChild(p);
+      container.appendChild(notification);
+      card.append(card_image, container);
+      card.addEventListener("click", () => {
+        getCard(anime);
+      });
+      card_layout.append(card);
+    });
+  } catch (err) {
+    loader_container.style.display = "none";
+    loader.style.display = "none";
+    // search_container.style.display = "none";
+    // btn_container.style.display = "none";
+    throw new Error(err.message);
+  }
+};
+
+
+const searchBar = document.getElementById("search");
+searchBar.addEventListener("keydown", (e) => {
+  if (e.key === "Enter") {
+    e.preventDefault();
+    let searchValue = searchBar.value.trim();
+    footer.style.display = "none";
+    if (searchValue.length === 0) {
+      alert("Please enter a value..");
+    } else {
+      loader_container.style.display = "flex";
+      loader.style.display = "inline-block";
+      // subheading.style.display = "none";
+      card_layout.innerHTML = " ";
+      console.log(searchValue);
+      searchAnimeData(searchValue);
+    }
+  }
+});
+
+
+const getCard = (anime) => {
+  console.log(anime);
+  localStorage.setItem("anime-info", JSON.stringify(anime));
+  window.location.href = "../anime-details/anime-details.html";
+};

@@ -16,8 +16,6 @@ ep_header.style.display = "none";
 const hr = document.getElementById("hr");
 hr.style.display = "none";
 
-const footer = document.querySelector(".footer");
-
 document.getElementById("progress-bar").style.display = "none";
 
 const goBack = () => {
@@ -47,7 +45,7 @@ const getAnimeInfo = async () => {
     loader.style.display = "none";
     ep_header.style.display = "flex";
     hr.style.display = "flex";
-    footer.style.display = "block";
+    footer.style.display = "block ";
     const main_div = document.createElement("div");
     main_div.className = "main_div";
     //left-div

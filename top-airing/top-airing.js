@@ -2,7 +2,6 @@
 
 const next = document.getElementById("next");
 const prev = document.getElementById("prev");
-const card_layout = document.getElementById("card_wrapper");
 const url = "https://api.consumet.org/meta/anilist/trending";
 let page = 1;
 
@@ -83,8 +82,8 @@ prev.addEventListener("click", (e) => {
   }
 });
 
-const getCard = (anime) => {
-  console.log(anime);
-  localStorage.setItem("anime-info", JSON.stringify(anime));
-  window.location.href = "../anime-details/anime-details.html";
-};
+// const getCard = (anime) => {
+//   console.log(anime);
+//   localStorage.setItem("anime-info", JSON.stringify(anime));
+//   window.location.href = "../anime-details/anime-details.html";
+// };

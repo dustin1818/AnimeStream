@@ -381,11 +381,6 @@ main {
   justify-content: end;
 }
 
-#prev2,
-#next2 {
-  display: none;
-}
-
 .subheading {
   display: none;
   font-size: 28px;
@@ -579,6 +574,7 @@ footer a {
     right: 15px !important;
     bottom: 9px !important;
     background: #485fc7;
+    display: none;
     z-index: 3;
   }
   .upper-container {

@@ -16,18 +16,19 @@ body {
   flex-direction: column;
   height: 100%;
   width: 100%;
-  padding: 30px 50px;
-  gap: 30px;
 }
 
 #video{
   height: 650px;
+  width: 100%;
 }
+
 
 .btn-container{
   display: flex;
   justify-content: space-between;
   width: 100%;
+  margin-bottom: 30px;
 }
 
 #btn-next2{
@@ -44,6 +45,7 @@ body {
   height: 100%;
   flex-wrap: wrap;
   gap: 10px;
+  margin: 30px 0px;
 }
 
 .ep-info-container{
@@ -66,19 +68,6 @@ body {
       font-weight: 600;
     }
   }
-}
-
-footer{
-  position: relative;
-  bottom: 0;
-  width: 100%;
-  background: #485fc7 !important;
-  color: #ffffff;
-}
-
-footer strong , footer a{
-  color: #ffffff !important;
-  text-decoration: underline;
 }
 
 @media screen and (max-width: 1020px) {
