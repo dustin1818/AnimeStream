@@ -105,6 +105,10 @@ main{
   width: 100%;
 }
 
+.subheading{
+  display: none;
+}
+
 
 .three-body {
   --uib-size: 35px;

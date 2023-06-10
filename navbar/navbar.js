@@ -211,7 +211,7 @@ const searchAnimeData = async (inputData) => {
     loader.style.display = "none";
     card_layout.style.display = "grid";
     // search_container.style.display = "flex";
-    // subheading.innerText = subheading ? "Search Results" : "";
+    subheading.innerText = subheading ? "Search Results" : "";
     results.forEach((anime) => {
       console.log(anime);
       const checkAnimeTitle = anime.title.english
@@ -250,7 +250,7 @@ const searchAnimeData = async (inputData) => {
     loader_container.style.display = "none";
     loader.style.display = "none";
     // search_container.style.display = "none";
-    // btn_container.style.display = "none";
+    btn_container.style.display = "none";
     throw new Error(err.message);
   }
 };
@@ -267,8 +267,11 @@ searchBar.addEventListener("keydown", (e) => {
     } else {
       loader_container.style.display = "flex";
       loader.style.display = "inline-block";
-      // subheading.style.display = "none";
+      // subheading.style.display = "flex";
+      // subheading.innerText = "Search Results";
       card_layout.innerHTML = " ";
+      btn_container.style.display = "none";
+      document.querySelector(".main-container").style.display = "none";
       searchAnimeData(searchValue);
     }
   }
@@ -284,13 +287,14 @@ searchBarMobile.addEventListener("keydown", (e) => {
     } else {
       loader_container.style.display = "flex";
       loader.style.display = "inline-block";
-      // subheading.style.display = "none";
+      // subheading.style.display = "flex";
+      // subheading.innerText = "Search Results";
       card_layout.innerHTML = " ";
       searchAnimeData(searchValue);
       nav.classList.toggle("is-active");
       nav_mobile.classList.toggle("nav-mobile-active");    
       searchBarMobile.value = "";
-      document.querySelector(".main-container").style.display = "none";
+      btn_container.style.display = "none";
       document.querySelector(".main-container").style.display = "none";
     }
   }
