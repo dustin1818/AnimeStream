@@ -49,9 +49,9 @@ const Vidstreaming = document.getElementById("Vidstreaming");
 const GogoServer = document.getElementById("GogoServer");
 const Streamsb = document.getElementById("Streamsb");
 
+
 //fetch episode function
 const getEp = async () => {
-  footer.style.display = "block"
   let episodeName = ep_id.id;
   console.log(episodeName);
   let serverData = await axios.get(

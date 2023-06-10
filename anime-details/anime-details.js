@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 
 const anime_info = JSON.parse(localStorage.getItem("anime-info"));
 // console.log(anime_info);
@@ -17,7 +17,6 @@ const hr = document.getElementById("hr");
 hr.style.display = "none";
 
 document.getElementById("progress-bar").style.display = "none";
-
 const goBack = () => {
   document.getElementById("progress-bar").style.display = "block";
   let progressBar = document.querySelector("#progress-bar .bar");
@@ -45,7 +44,7 @@ const getAnimeInfo = async () => {
     loader.style.display = "none";
     ep_header.style.display = "flex";
     hr.style.display = "flex";
-    footer.style.display = "block ";
+    document.querySelector(".footer").style.display = "block";    
     const main_div = document.createElement("div");
     main_div.className = "main_div";
     //left-div
@@ -163,7 +162,7 @@ const getAnimeInfo = async () => {
             let anime_ep = anime_data.episodes;
             const ep_id = anime_ep[i - 0];
              localStorage.setItem("ep_id", JSON.stringify(ep_id));
-             localStorage.setItem('ep-list', JSON.stringify(anime_ep));
+             localStorage.setItem("ep-list", JSON.stringify(anime_ep));
             location.href = "../stream-page/stream-page.html";
           } else {
             width++;

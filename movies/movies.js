@@ -20,6 +20,7 @@ const fetchAnime = async () => {
     loader_container.style.display = "none";
     loader.style.display = "none";
     btn_container.style.display = "flex";
+    document.querySelector(".footer").style.display = "block";    
     results.forEach((anime) => {
       const checkAnimeTitle = anime.title ? `${anime.title.english}` : `${anime.id.userPreferred}`;
       const card = document.createElement("div");

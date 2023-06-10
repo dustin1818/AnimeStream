@@ -1,10 +1,7 @@
 "use strict";
-
 const subheading = document.querySelector(".subheading");
 const card_layout = document.getElementById("card_wrapper");
-const footer = document.querySelector(".footer");
 const btn_container = document.querySelector(".btn-container");
-
 
 class Navbar extends HTMLElement {
   connectedCallback() {
@@ -12,89 +9,104 @@ class Navbar extends HTMLElement {
     <div id="progress-bar">
     <div class="bar"></div>
   </div>
-        <nav class="navbar is-link p-4" role="navigation" aria-label="main navigation">
-        <div class="navbar-brand" style="margin-right: 10px;">
-          <a class="navbar-item " href="../index.html">
-            <p class="title has-text-white">
-              Anime Stream
-            </p>
-          </a>
+  <nav class="navbar is-link p-4" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand" style="margin-right: 10px;">
+    <a class="navbar-item " href="../index.html">
+      <p class="title has-text-white">
+        Anime Stream
+      </p>
+    </a>
+
+    <a role="button" id="nav" class="navbar-burger" aria-label="menu" aria-expanded="false"
+      data-target="navbarBasicExample">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
     
-          <a role="button" id="nav" class="navbar-burger" aria-label="menu" aria-expanded="false"
-            data-target="navbarBasicExample">
-            <span aria-hidden="true"></span>
-            <span aria-hidden="true"></span>
-            <span aria-hidden="true"></span>
-          </a>
-    
-          <div class="nav-mobile">
-            <a href="../index.html" onclick ="redirectToAnotherPage()" >
-              Home
+    <div class="nav-mobile">
+      <div class="group">
+        <svg class="icon" aria-hidden="true" viewBox="0 0 24 24">
+          <g>
+            <path
+              d="M21.53 20.47l-3.66-3.66C19.195 15.24 20 13.214 20 11c0-4.97-4.03-9-9-9s-9 4.03-9 9 4.03 9 9 9c2.215 0 4.24-.804 5.808-2.13l3.66 3.66c.147.146.34.22.53.22s.385-.073.53-.22c.295-.293.295-.767.002-1.06zM3.5 11c0-4.135 3.365-7.5 7.5-7.5s7.5 3.365 7.5 7.5-3.365 7.5-7.5 7.5-7.5-3.365-7.5-7.5z">
+            </path>
+          </g>
+        </svg>
+        <input id="search" placeholder="Search" type="search" name="search" class="input" required
+          aria-required="true">
+      </div>
+      <a onclick="redirectToAnotherPage()">
+        Home
+      </a>
+
+      <a onclick="redirectToAnotherPage2()">
+        Top Airing
+      </a>
+
+      <a onclick="redirectToAnotherPage3()">
+        Popular
+      </a>
+      <a onclick="redirectToAnotherPage4()">
+        Movies
+      </a>
+      <a class="button  is-link" onclick="redirectToAnotherPage5()">
+        <strong>Sign up</strong>
+      </a>
+      <a class="button is-light" onclick="redirectToAnotherPage6()">
+        Log in
+      </a>
+    </div>
+
+    <div id="navbarBasicExample" class="navbar-menu">
+      <div class="navbar-start">
+        <a class="navbar-item" onclick="redirectToAnotherPage()">
+          Home
+        </a>
+
+        <a class="navbar-item" onclick="redirectToAnotherPage2()">
+          Top Airing
+        </a>
+
+        <a class="navbar-item" onclick="redirectToAnotherPage3()">
+          Popular
+        </a>
+
+        <a class="navbar-item" onclick="redirectToAnotherPage4()">
+          Movies
+        </a>
+      </div>
+
+      <div class="navbar-end">
+      <div class="group">
+        <svg class="icon" aria-hidden="true" viewBox="0 0 24 24">
+          <g>
+            <path
+              d="M21.53 20.47l-3.66-3.66C19.195 15.24 20 13.214 20 11c0-4.97-4.03-9-9-9s-9 4.03-9 9 4.03 9 9 9c2.215 0 4.24-.804 5.808-2.13l3.66 3.66c.147.146.34.22.53.22s.385-.073.53-.22c.295-.293.295-.767.002-1.06zM3.5 11c0-4.135 3.365-7.5 7.5-7.5s7.5 3.365 7.5 7.5-3.365 7.5-7.5 7.5-7.5-3.365-7.5-7.5z">
+            </path>
+          </g>
+        </svg>
+        <input id="searchDesktop" placeholder="Search" type="search" name="search" class="input" required
+          aria-required="true">
+      </div>
+        <div class="navbar-item">
+          <div class="buttons">
+            <a class="button  is-link" onclick="redirectToAnotherPage5()">
+              <strong>Sign up</strong>
             </a>
-    
-            <a onclick = "redirectToAnotherPage2()">
-              Top Airing
-            </a>
-    
-            <a onclick = "redirectToAnotherPage3()">
-              Popular
-            </a>
-            <a onclick = "redirectToAnotherPage4()">
-              Movies
+            <a class="button is-light" onclick="redirectToAnotherPage6()">
+              Log in
             </a>
           </div>
         </div>
-    
-        <div id="navbarBasicExample" class="navbar-menu">
-          <div class="navbar-start">
-            <a class="navbar-item" onclick = "redirectToAnotherPage()">
-              Home
-            </a>
-    
-            <a  class="navbar-item" onclick = "redirectToAnotherPage2()">
-              Top Airing
-            </a>
-    
-            <a  class="navbar-item"  onclick = "redirectToAnotherPage3()">
-              Popular
-            </a>
-    
-            <a class="navbar-item" onclick = "redirectToAnotherPage4()">
-              Movies
-            </a>
-          </div>
-    
-          <div class="navbar-end">
-          <div class="group">
-          <svg class="icon" aria-hidden="true" viewBox="0 0 24 24">
-            <g>
-              <path
-                d="M21.53 20.47l-3.66-3.66C19.195 15.24 20 13.214 20 11c0-4.97-4.03-9-9-9s-9 4.03-9 9 4.03 9 9 9c2.215 0 4.24-.804 5.808-2.13l3.66 3.66c.147.146.34.22.53.22s.385-.073.53-.22c.295-.293.295-.767.002-1.06zM3.5 11c0-4.135 3.365-7.5 7.5-7.5s7.5 3.365 7.5 7.5-3.365 7.5-7.5 7.5-7.5-3.365-7.5-7.5z">
-              </path>
-            </g>
-          </svg>
-          <input id="search" placeholder="Search" type="search" name="search" class="input" required aria-required="true">
-        </div>
-            <div class="navbar-item">
-              <div class="buttons">
-                <a id="signup" class="button is-link" target="_blank" onclick = "redirectToAnotherPage5()">
-                  <strong>Sign up</strong>
-                </a>
-                <a id="signup" class="button is-light" target="_blank" onclick = "redirectToAnotherPage6()">
-                  Log in
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </nav>
-    
+      </div>
+    </div>
+</nav>
         `;
   }
 }
 
 customElements.define("app-navbar", Navbar); // component to use navbar
-
 const nav = document.getElementById("nav");
 const nav_mobile = document.querySelector(".nav-mobile");
 nav.addEventListener("click", () => {
@@ -188,20 +200,18 @@ function redirectToAnotherPage6() {
   }
 }
 
-
 //serach anime data
 const searchAnimeData = async (inputData) => {
   try {
     const getAnimeResult = await axios.get(
       `https://api.consumet.org/meta/anilist/${inputData}?page=1&perPage=100`
     );
-
     const { results } = getAnimeResult.data;
     loader_container.style.display = "none";
     loader.style.display = "none";
     card_layout.style.display = "grid";
     // search_container.style.display = "flex";
-    // subheading.innerText = subheading ? "Search Results" : ""; 
+    // subheading.innerText = subheading ? "Search Results" : "";
     results.forEach((anime) => {
       console.log(anime);
       const checkAnimeTitle = anime.title.english
@@ -245,13 +255,12 @@ const searchAnimeData = async (inputData) => {
   }
 };
 
-
-const searchBar = document.getElementById("search");
+const searchBar = document.getElementById("searchDesktop");
 searchBar.addEventListener("keydown", (e) => {
   if (e.key === "Enter") {
     e.preventDefault();
+    console.log(searchBar.value);
     let searchValue = searchBar.value.trim();
-    footer.style.display = "none";
     btn_container.style.display = "none";
     if (searchValue.length === 0) {
       alert("Please enter a value..");
@@ -260,12 +269,32 @@ searchBar.addEventListener("keydown", (e) => {
       loader.style.display = "inline-block";
       // subheading.style.display = "none";
       card_layout.innerHTML = " ";
-      console.log(searchValue);
       searchAnimeData(searchValue);
     }
   }
 });
 
+const searchBarMobile = document.getElementById("search");
+searchBarMobile.addEventListener("keydown", (e) => {
+  if (e.key === "Enter") {
+    e.preventDefault();
+    let searchValue = searchBarMobile.value.trim();
+    if (searchValue.length === 0) {
+      alert("Please enter a value..");
+    } else {
+      loader_container.style.display = "flex";
+      loader.style.display = "inline-block";
+      // subheading.style.display = "none";
+      card_layout.innerHTML = " ";
+      searchAnimeData(searchValue);
+      nav.classList.toggle("is-active");
+      nav_mobile.classList.toggle("nav-mobile-active");    
+      searchBarMobile.value = "";
+      document.querySelector(".main-container").style.display = "none";
+      document.querySelector(".main-container").style.display = "none";
+    }
+  }
+});
 
 const getCard = (anime) => {
   console.log(anime);

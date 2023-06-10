@@ -225,21 +225,6 @@ main {
   font-weight: 500;
 }
 
-.footer {
-  display: none;
-  position: relative;
-  bottom: 0;
-  width: 100%;
-  background: #485fc7 !important;
-  color: #ffffff;
-}
-
-footer strong,
-footer a {
-  color: #ffffff !important;
-  text-decoration: underline;
-}
-
 @media screen and (max-width: 1020px) {
   .subheading{
     margin: 50px 20px;

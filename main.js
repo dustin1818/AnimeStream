@@ -146,7 +146,7 @@ function redirectToAnotherPage6() {
 //get anime
 const fetchAnime = async () => {
   try {
-    const data = await axios.get(`${url}?page=${page}&perPage=21`);
+    const data = await axios.get(`${url}?page=${page}&perPage=35`);
     const { results } = data.data;
     loader_container.style.display = "none";
     loader.style.display = "none";
@@ -155,7 +155,7 @@ const fetchAnime = async () => {
     subheading.style.display = "flex";
     footer.style.display = "block";
     btn_container.style.display = "flex";
-    for (let i = 4; i <= 12; i++) {
+    for (let i = 0; i <= 8; i++) {
       //carousel add image
       console.log(results[i]);
       const carousel_image = document.createElement("img");
@@ -180,7 +180,7 @@ const fetchAnime = async () => {
       const carousel_right_div = document.createElement("div");
       carousel_right_div.classList.add("carousel-rightDiv");
       const episode_description = document.createElement("p");
-      episode_description.innerText = `Episode Title: ${results[i].episodeTitle}`;
+      episode_description.innerText = `New  Episode Title: ${results[i].episodeTitle}`;
       episode_description.classList.add("carousel_description");
       const button_carousel = document.createElement("button");
       button_carousel.innerHTML = "Check Anime";
@@ -358,22 +358,45 @@ const searchAnimeData = async (inputData) => {
   }
 };
 
-const searchBar = document.getElementById("search");
+const searchBar = document.getElementById("searchDesktop");
 searchBar.addEventListener("keydown", (e) => {
   if (e.key === "Enter") {
     e.preventDefault();
+    console.log(searchBar.value);
     let searchValue = searchBar.value.trim();
+    btn_container.style.display = "none";
     if (searchValue.length === 0) {
       alert("Please enter a value..");
     } else {
       loader_container.style.display = "flex";
       loader.style.display = "inline-block";
-      next.style.display = "none";
-      prev.style.display = "none";
-      subheading.style.display = "none";
+      // subheading.style.display = "none";
       card_layout.innerHTML = " ";
       searchAnimeData(searchValue);
     }
   }
 });
+
+const searchBarMobile = document.getElementById("search");
+searchBarMobile.addEventListener("keydown", (e) => {
+  if (e.key === "Enter") {
+    e.preventDefault();
+    let searchValue = searchBarMobile.value.trim();
+    if (searchValue.length === 0) {
+      alert("Please enter a value..");
+    } else {
+      loader_container.style.display = "flex";
+      loader.style.display = "inline-block";
+      subheading.style.display = "none";
+      card_layout.innerHTML = " ";
+      searchAnimeData(searchValue);
+      nav.classList.toggle("is-active");
+      nav_mobile.classList.toggle("nav-mobile-active");    
+      searchBarMobile.value = "";
+      document.querySelector(".main-container").style.display = "none";
+    }
+  }
+});
+
+
 

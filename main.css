@@ -15,6 +15,11 @@ main {
   height: 100%;
 }
 
+.navbar-brand{
+  width: 100%;
+  margin-right: 0 !important;
+  }
+
 /* loading Bar */
 
 #progress-bar {
@@ -157,7 +162,7 @@ main {
 /* carousel  */
 .carousel-container {
   position: relative;
-  height: 650px;
+  height: 850px;
   margin: 0;
   padding: 0;
   display: none;
@@ -235,7 +240,7 @@ main {
 }
 
 .imageLeftDiv {
-  height: 350px;
+  height: 570px;
   border: 4px solid #98abff;
   border-radius: 15px;
 }
@@ -249,12 +254,14 @@ main {
   position: absolute;
   top: 15px;
   right: 0;
-  font-size: 14px;
+  font-size: 20px;
   color: white;
   background: #485fc7;
   border-radius: 1px;
+  border-radius: 0 0 0 9px;
   padding: 8px;
   text-align: center;
+
 }
 
 .carousel-rightDiv {
@@ -266,15 +273,23 @@ main {
   gap: 20px;
 }
 
-.carousel_description,
-.typeAnime {
-  color: white;
-  font-weight: 500;
-  max-width: 850px;
+.carousel_description{
+  font-size: 30px;
+  color: white; 
+  font-weight: 600; 
 }
+
+.typeAnime {
+  font-weight: 300;
+  max-width: 850px;
+  color: white !important;  
+}
+
 
 .button_carousel {
   font-weight: 600;
+  font-size: 18px !important;
+
 }
 .carousel_text {
   position: absolute;
@@ -470,21 +485,6 @@ main {
   width: 100%;
 }
 
-.footer {
-  display: none;
-  position: relative;
-  bottom: 0;
-  width: 100%;
-  background: #485fc7 !important;
-  color: #ffffff;
-}
-
-footer strong,
-footer a {
-  color: #ffffff !important;
-  text-decoration: underline;
-}
-
 @media screen and (max-width: 1020px) {
   .navbar.is-link {
     position: fixed;
@@ -532,8 +532,25 @@ footer a {
 }
 
 @media screen and (max-width: 450px) {
-  .navbar-item p {
-    font-size: 28px;
+  .title{
+    font-size: 26.5px !important;
+  }
+
+  .navbar-item p, .button.is-link strong, .nav-mobile-active a {
+    font-size: 24px;
+    font-weight: 600 !important;
+  }
+
+  .button.is-light{
+    height: 49px;
+  }
+
+  .input, .textarea{
+    height: 48px !important;
+  }
+
+  .group{
+    width: 90%;
   }
 
   main {
@@ -566,8 +583,12 @@ footer a {
   }
 
   .carousel_text {
-    font-size: 18px;
+    font-size: 22px;
     font-weight: 600;
+  }
+
+  .carousel_description{
+    font-size: 20px;
   }
 
   .autoplay-progress {

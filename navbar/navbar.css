@@ -9,7 +9,12 @@
   text-decoration: none;
 }
 .title{
-  font-size: 30px !important;
+  font-size: 30px ;
+}
+
+.navbar-brand{
+width: 100%;
+margin-right: 0 !important;
 }
 
 
@@ -152,23 +157,6 @@
   z-index: 2;
 }
 
-
-.footer {
-  display: none;
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  background: #485fc7 !important;
-  color: #ffffff;
-}
-
-footer strong,
-footer a {
-  color: #ffffff !important;
-  text-decoration: underline;
-}
-
-
 @media screen and (max-width: 1020px) {
     .navbar.is-link {
       position: fixed;
@@ -180,8 +168,29 @@ footer a {
   }
   
   @media screen and (max-width: 450px) {
-    .navbar-item p {
-      font-size: 28px;
+    .title{
+      font-size: 26.5px !important;
+    }
+
+    .nav-mobile-active {
+      gap: 25px;
+    }
+
+    .navbar-item p, .button.is-link strong, .nav-mobile-active a {
+      font-size: 24px;
+      font-weight: 600 !important;
+    }
+
+    .button.is-light{
+      height: 49px;
+    }
+
+    .group{
+      width: 90%;
+    }
+
+    .input, .textarea{
+      height: 48px !important;
     }
   }
   
