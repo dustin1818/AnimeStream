@@ -16,7 +16,6 @@ body {
   flex-direction: column;
   height: 100%;
   width: 100%;
-  padding: 40px;
 }
 
 
@@ -226,7 +225,7 @@ main{
  
 
 #video{
-  height: 650px;
+  height: 100%;
   width: 100%;
 }
 

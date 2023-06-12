@@ -10,15 +10,20 @@
 }
 
 main {
-  padding: 50px 30px;
+  padding: 70px 30px;
   width: 100%;
   height: 100%;
 }
 
-.navbar-brand{
+.navbar-brand {
   width: 100%;
   margin-right: 0 !important;
-  }
+}
+
+.navbar-start{
+  margin-left: 15px;
+}
+
 
 /* loading Bar */
 
@@ -52,7 +57,34 @@ main {
   align-items: center;
 }
 
+.loader-container2 {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
 .three-body {
+  --uib-size: 35px;
+  --uib-speed: 0.8s;
+  --uib-color: #5d3fd3;
+  position: relative;
+  display: none;
+  height: var(--uib-size);
+  width: var(--uib-size);
+  animation: spin78236 calc(var(--uib-speed) * 2.5) infinite linear;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+.three-body2 {
   --uib-size: 35px;
   --uib-speed: 0.8s;
   --uib-color: #5d3fd3;
@@ -162,7 +194,7 @@ main {
 /* carousel  */
 .carousel-container {
   position: relative;
-  height: 850px;
+  height: 90vh;
   margin: 0;
   padding: 0;
   display: none;
@@ -215,7 +247,7 @@ main {
 
 .swiper-button-next,
 .swiper-button-prev {
-  color: #485fc7 !important ;
+  color: #f3f3f4 !important ;
   z-index: 5;
 }
 
@@ -257,11 +289,9 @@ main {
   font-size: 20px;
   color: white;
   background: #485fc7;
-  border-radius: 1px;
   border-radius: 0 0 0 9px;
   padding: 8px;
   text-align: center;
-
 }
 
 .carousel-rightDiv {
@@ -273,23 +303,21 @@ main {
   gap: 20px;
 }
 
-.carousel_description{
+.carousel_description {
   font-size: 30px;
-  color: white; 
-  font-weight: 600; 
+  color: white;
+  font-weight: 600;
 }
 
 .typeAnime {
   font-weight: 300;
   max-width: 850px;
-  color: white !important;  
+  color: white !important;
 }
-
 
 .button_carousel {
   font-weight: 600;
   font-size: 18px !important;
-
 }
 .carousel_text {
   position: absolute;
@@ -336,13 +364,6 @@ main {
 }
 
 /* searchbar  */
-.upper-container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 30px;
-}
-
 .group {
   display: flex;
   flex-direction: row;
@@ -393,7 +414,18 @@ main {
 .btn-container {
   width: 100%;
   display: flex;
-  justify-content: end;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 30px;
+}
+
+.button.is-link.is-outlined {
+  width: 140px;
+  font-size: 18px;
+}
+.button.is-link.is-outlined:hover {
+  font-weight: 600;
+  transition: ease-in-out 0.3s;
 }
 
 .subheading {
@@ -422,9 +454,11 @@ main {
 }
 
 /* anime grid layout  */
+
 .card_wrapper {
+  position: relative;
   display: grid;
-  grid-template-columns: repeat(7, 1fr);
+  grid-template-columns: repeat(5, 1fr);
   gap: 20px;
 }
 
@@ -440,7 +474,7 @@ main {
   cursor: pointer;
 }
 .img_card:hover {
-  transition: 0.3s all ease-in-out;
+  transition: 0.3s ease-in-out;
   transform: scale(1.06);
 }
 
@@ -462,11 +496,11 @@ main {
   background: #485fc7;
   text-align: center;
   padding: 8px;
-  border-radius: 1px;
+  border-radius: 0 0 0 9px;
   font-size: 14px;
 }
 
-.container.is-fullhd {
+.container-fluid {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -483,6 +517,21 @@ main {
   font-size: 14px;
   color: #3f3f3f;
   width: 100%;
+}
+
+#scrollToTop {
+  position: relative;
+  bottom: 52px;
+  left: -38px;
+  width: 50px;
+  display: flex;
+  justify-content: end;
+  margin-left: auto;
+}
+
+#scrollToTop:hover {
+  transition: all 0.3s ease-in-out;
+  transform: translateY(-8px);
 }
 
 @media screen and (max-width: 1020px) {
@@ -532,24 +581,27 @@ main {
 }
 
 @media screen and (max-width: 450px) {
-  .title{
+  .title {
     font-size: 26.5px !important;
   }
 
-  .navbar-item p, .button.is-link strong, .nav-mobile-active a {
+  .navbar-item p,
+  .button.is-link strong,
+  .nav-mobile-active a {
     font-size: 24px;
     font-weight: 600 !important;
   }
 
-  .button.is-light{
+  .button.is-light {
     height: 49px;
   }
 
-  .input, .textarea{
+  .input,
+  .textarea {
     height: 48px !important;
   }
 
-  .group{
+  .group {
     width: 90%;
   }
 
@@ -587,7 +639,7 @@ main {
     font-weight: 600;
   }
 
-  .carousel_description{
+  .carousel_description {
     font-size: 20px;
   }
 
@@ -598,15 +650,10 @@ main {
     display: none;
     z-index: 3;
   }
-  .upper-container {
-    display: flex;
-    flex-direction: column;
-    gap: 18px;
-    margin: 30px 0;
-  }
 
   .btn-container {
     justify-content: center;
+    margin-bottom: 30px;
   }
 
   .subheading {
@@ -630,5 +677,13 @@ main {
     > p {
       font-size: 11px;
     }
+  }
+
+  #scrollToTop {
+    bottom: 19px;
+    left: -23px;
+    width: 31px;
+    height: 26px;
+    z-index: 30;
   }
 }

@@ -2,8 +2,8 @@
 //pagination div
 const next = document.getElementById("next");
 const prev = document.getElementById("prev");
-const next2 = document.getElementById("next2");
-const prev2 = document.getElementById("prev2");
+const scrollBtn = document.getElementById("scrollToTop");
+scrollBtn.style.display = "none";
 const card_layout = document.getElementById("card_wrapper");
 //api
 const url = "https://api.consumet.org/meta/anilist/recent-episodes";
@@ -21,17 +21,35 @@ const carousel_container = document.querySelector(".carousel-container");
 //loader
 const loader_container = document.querySelector(".loader-container");
 const loader = document.querySelector(".three-body");
+const loader_container2 = document.querySelector(".loader-container2");
+const loader2 = document.querySelector(".three-body2");
 loader_container.style.display = "flex";
 loader.style.display = "inline-block";
-//search container
-const search_container = document.querySelector(".upper-container");
-search_container.style.display = "none";
 //pagination container
 const btn_container = document.querySelector(".btn-container");
 btn_container.style.display = "none";
+const btn_page = document.querySelectorAll(".button is-link is-outlined");
+
 const subheading = document.querySelector(".subheading");
 //footer container
 const footer = document.querySelector(".footer");
+
+//navbar active function
+// const navItems = document.querySelectorAll(".navbar-item");
+
+// function navActive () {
+//   navItems.forEach((item) => {
+//     item.classList.remove('selected');
+//   });
+
+//   this.classList.add('selected');
+// }
+
+// navItems.forEach((item) => {
+//   item.addEventListener('click', navActive);
+// })
+
+
 //carousel function
 const progressCircle = document.querySelector(".autoplay-progress svg");
 const progressContent = document.querySelector(".autoplay-progress span");
@@ -119,7 +137,7 @@ function redirectToAnotherPage5() {
     if (width >= 100) {
       // Redirect to another page when the progress reaches 100%
       clearInterval(intervalId);
-      window.open("https://anilist.co/signup",'_blank')
+      window.open("https://anilist.co/signup","_blank")
       window.location.reload();
     } else {
       width++;
@@ -133,7 +151,7 @@ function redirectToAnotherPage6() {
     if (width >= 100) {
       // Redirect to another page when the progress reaches 100%
       clearInterval(intervalId);
-      window.open("https://anilist.co/login",'_blank')
+      window.open("https://anilist.co/login","_blank")
       window.location.reload();
     } else {
       width++;
@@ -146,15 +164,17 @@ function redirectToAnotherPage6() {
 //get anime
 const fetchAnime = async () => {
   try {
-    const data = await axios.get(`${url}?page=${page}&perPage=35`);
+    const data = await axios.get(`${url}?page=${page}&perPage=50`);
     const { results } = data.data;
     loader_container.style.display = "none";
     loader.style.display = "none";
+    loader_container2.style.display = "none";
+    loader2.style.display = "none";
     carousel_container.style.display = "flex";
-    search_container.style.display = "flex";
     subheading.style.display = "flex";
     footer.style.display = "block";
     btn_container.style.display = "flex";
+    scrollBtn.style.display = "flex";
     for (let i = 0; i <= 8; i++) {
       //carousel add image
       console.log(results[i]);
@@ -183,7 +203,7 @@ const fetchAnime = async () => {
       episode_description.innerText = `New  Episode Title: ${results[i].episodeTitle}`;
       episode_description.classList.add("carousel_description");
       const button_carousel = document.createElement("button");
-      button_carousel.innerHTML = "Check Anime";
+      button_carousel.innerHTML = "Watch Now";
       button_carousel.classList.add("button_carousel");
       button_carousel.classList.add("button");
       button_carousel.classList.add("is-link");
@@ -252,7 +272,6 @@ const fetchAnime = async () => {
   } catch (err) {
     loader_container.style.display = "none";
     loader.style.display = "none";
-    search_container.style.display = "none";
     btn_container.style.display = "none";
     throw new Error(err.message);
   }
@@ -261,9 +280,10 @@ const fetchAnime = async () => {
 fetchAnime();
 
 //pagination
+
 next.addEventListener("click", () => {
-  loader_container.style.display = "flex";
-  loader.style.display = "inline-block";
+  loader_container2.style.display = "flex";
+  loader2.style.display = "flex";
   page += 1;
   card_layout.innerHTML = " ";
   fetchAnime();
@@ -272,8 +292,8 @@ prev.addEventListener("click", (e) => {
   if (page === 1) {
     e.preventDefault();
   } else {
-    loader_container.style.display = "flex";
-    loader.style.display = "inline-block";
+    loader_container2.style.display = "flex";
+    loader2.style.display = "flex";
     page -= 1;
     card_layout.innerHTML = " ";
     fetchAnime();
@@ -302,11 +322,9 @@ const searchAnimeData = async (inputData) => {
     const getAnimeResult = await axios.get(
       `https://api.consumet.org/meta/anilist/${inputData}?page=${page}&perPage=100`
     );
-
     const { results } = getAnimeResult.data;
     loader_container.style.display = "none";
     loader.style.display = "none";
-    search_container.style.display = "flex";
     btn_container.style.display = "flex";
     subheading.style.display = "flex";
     subheading.innerText = "Search Results";
@@ -352,7 +370,6 @@ const searchAnimeData = async (inputData) => {
   } catch (err) {
     loader_container.style.display = "none";
     loader.style.display = "none";
-    search_container.style.display = "none";
     btn_container.style.display = "none";
     throw new Error(err.message);
   }
@@ -370,7 +387,6 @@ searchBar.addEventListener("keydown", (e) => {
     } else {
       loader_container.style.display = "flex";
       loader.style.display = "inline-block";
-      // subheading.style.display = "none";
       card_layout.innerHTML = " ";
       searchAnimeData(searchValue);
     }
@@ -397,6 +413,9 @@ searchBarMobile.addEventListener("keydown", (e) => {
     }
   }
 });
+
+
+
 
 
 

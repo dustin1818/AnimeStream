@@ -124,6 +124,7 @@ function redirectToAnotherPage() {
     if (width >= 100) {
       clearInterval(intervalId);
       window.location.href = "../index.html";
+     
     } else {
       width++;
       progressBar.style.width = width + "%";
