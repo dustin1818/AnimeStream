@@ -282,6 +282,10 @@ main{
 
 
 @media screen and (max-width: 1020px) {
+  .btn-container{
+    margin-top: 100px;
+  }
+
   .lower-container {
     height: auto;
     gap: 30px;
@@ -313,6 +317,7 @@ main{
   }
 
   .btn-container{
+    margin-top: 0;
     justify-content: flex-start;
   }
 

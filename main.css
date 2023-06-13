@@ -542,6 +542,14 @@ main {
     width: 100%;
   }
 
+  .carousel-container{
+    height: 100%;
+  }
+
+  .btn-container{
+    margin-top: 80px;
+  }
+
   .subheading {
     margin: 50px 20px;
   }

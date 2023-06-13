@@ -32,10 +32,10 @@ const goBack = () => {
   }
 };
 
-episodeImage.src =  ep_info.image;
-episodeImage.alt =  ep_info.image;
-episodeTitle.innerText = `Episode: ${ep_id.number} - ${ep_id.title}`
-episodeSynopsis.innerText = `${ep_id.description}`
+episodeImage.src = ep_info.image;
+episodeImage.alt = ep_info.image;
+episodeTitle.innerText = `Episode: ${ep_id.number} - ${ep_id.title}`;
+episodeSynopsis.innerText = `${ep_id.description}`;
 
 //quality button
 const lowQualityBtn = document.getElementById("360p");
@@ -48,7 +48,6 @@ const autoQualityBtn = document.getElementById("auto");
 const Vidstreaming = document.getElementById("Vidstreaming");
 const GogoServer = document.getElementById("GogoServer");
 const Streamsb = document.getElementById("Streamsb");
-
 
 //fetch episode function
 const getEp = async () => {
@@ -353,45 +352,48 @@ const getNextEpisode = async (nextEpTitle) => {
 };
 
 let pageDecrementor = 1;
-prevBtn.addEventListener("click", async () => {
+// for episode number page
+let text = ep_id.id;
+let EpPage = text.substring(text.lastIndexOf("episode-") + "episode-".length);
+console.log(`Current Page`, EpPage);
+//for episode name
+let text2 = ep_id.id;
+let EpName = text2.substring(
+  0,
+  text2.lastIndexOf("episode-") + "episode".length
+);
+console.log(EpPage)
+if (EpPage < 2) {
+  prevBtn.style.display = "none";
+}else{
+  prevBtn.style.display = "revert";
+}
+prevBtn.addEventListener("click", async (e) => {
   try {
-    // for episode number page
-    let text = ep_id.id;
-    let EpPage = text.substring(
-      text.lastIndexOf("episode-") + "episode-".length
-    );
-    console.log(`Current Page`, EpPage);
-    //for episode name
-    let text2 = ep_id.id;
-    let EpName = text2.substring(
-      0,
-      text2.lastIndexOf("episode-") + "episode".length
-    );
     pageDecrementor -= Number(EpPage);
-    let pageString = pageDecrementor.toString();
-    const nextEpName = EpName + pageString;
-    console.log("-------------");
-    const nextEpData = await getPrevEpisode(nextEpName);
-    console.log(nextEpData);
-    localStorage.setItem("ep_id", JSON.stringify(nextEpData));
-    const storeNextEp = JSON.parse(localStorage.getItem("ep_id"));
-    console.log(storeNextEp);
-    document.getElementById("progress-bar").style.display = "block";
-    let progressBar = document.querySelector("#progress-bar .bar");
-    let width = 0;
-    let intervalId = setInterval(frame, 10);
-    function frame() {
-      if (width >= 100) {
-        clearInterval(intervalId);
-        window.location.reload();
-        getEp();
-      } else {
-        width++;
-        progressBar.style.width = width + "%";
+      let pageString = pageDecrementor.toString();
+      const nextEpName = EpName + pageString;
+      console.log("-------------");
+      const nextEpData = await getPrevEpisode(nextEpName);
+      console.log(nextEpData);
+      localStorage.setItem("ep_id", JSON.stringify(nextEpData));
+      const storeNextEp = JSON.parse(localStorage.getItem("ep_id"));
+      console.log(storeNextEp);
+      document.getElementById("progress-bar").style.display = "block";
+      let progressBar = document.querySelector("#progress-bar .bar");
+      let width = 0;
+      let intervalId = setInterval(frame, 10);
+      function frame() {
+        if (width >= 100) {
+          clearInterval(intervalId);
+          window.location.reload();
+          getEp();
+        } else {
+          width++;
+          progressBar.style.width = width + "%";
       }
     }
   } catch (e) {
-    alert("There is no episode next");
     console.log("Error", e);
   }
 });

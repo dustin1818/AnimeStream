@@ -95,6 +95,17 @@ const getAnimeInfo = async () => {
       genre_subtext.classList.add("is-link");
       genre_subtext.append(genre);
       console.log(genre_subtext);
+      genre_subtext.addEventListener(("click"), () => {
+        // console.log(genre_subtext.innerText)
+        // console.log(genre);
+        if(genre_subtext.innerText === genre){
+          console.log("hi")
+          console.log(genre_subtext.innerText)
+          const genreType = genre_subtext.innerText;
+          localStorage.setItem("genreValue", genreType);
+          window.location.href = "../genre-page/genre.html";
+        }
+      })
       category.append(genre_subtext);
     });
 
