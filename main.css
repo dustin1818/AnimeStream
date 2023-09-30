@@ -247,7 +247,7 @@ main {
   display: block;
   width: 100%;
   height: 500px;
-  object-fit: contain;
+  object-fit: cover;
 }
 
 .swiper-button-next,
@@ -622,11 +622,15 @@ main {
   }
 
   .carousel-container {
-    height: 100vh;
+    height: 84vh;
   }
 
   .swiper-slide.overlay.swiper-slide-active {
     width: 100%;
+  }
+
+  .swiper-slide.overlay.swiper-slide-active img {
+    height: 100%;
   }
 
   .carousel-wrapper {
@@ -635,11 +639,9 @@ main {
   }
 
   .carousel-leftDiv {
-    width: 76%;
+    width: 95%;
   }
-  .imageLeftDiv {
-    height: 300px;
-  }
+
   .carousel-rightDiv {
     flex-wrap: wrap;
     margin-left: 0;
