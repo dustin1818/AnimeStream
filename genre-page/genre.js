@@ -1,12 +1,12 @@
 "use strict";
 
 const getGenre = localStorage.getItem("genreValue");
-console.log(getGenre)
+console.log(getGenre);
 
 const next = document.getElementById("next");
 const prev = document.getElementById("prev");
 // const card_layout = document.getElementById("card_wrapper");
-const url = `https://api.consumet.org/meta/anilist/advanced-search?genres=["${getGenre}"]`;
+const url = `https://consumet-api-drab.vercel.app/meta/anilist/advanced-search?genres=["${getGenre}"]`;
 let page = 1;
 
 const loader_container = document.querySelector(".loader-container");
@@ -16,7 +16,7 @@ loader.style.display = "inline-block";
 
 btn_container.style.display = "none";
 
-document.querySelector(".subheading").innerText = `Top ${getGenre} Anime`    
+document.querySelector(".subheading").innerText = `Top ${getGenre} Anime`;
 
 const fetchAnime = async () => {
   try {
@@ -28,7 +28,9 @@ const fetchAnime = async () => {
     btn_container.style.display = "flex";
     document.querySelector(".footer").style.display = "block";
     results.forEach((anime) => {
-      const checkAnimeTitle = anime.title ? `${anime.title.english}` : `${anime.id.userPreferred}`;
+      const checkAnimeTitle = anime.title
+        ? `${anime.title.english}`
+        : `${anime.id.userPreferred}`;
       const card = document.createElement("div");
       card.classList.add("card");
       const card_image = document.createElement("div");

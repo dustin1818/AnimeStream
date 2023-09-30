@@ -124,7 +124,6 @@ function redirectToAnotherPage() {
     if (width >= 100) {
       clearInterval(intervalId);
       window.location.href = "../index.html";
-     
     } else {
       width++;
       progressBar.style.width = width + "%";
@@ -205,7 +204,7 @@ function redirectToAnotherPage6() {
 const searchAnimeData = async (inputData) => {
   try {
     const getAnimeResult = await axios.get(
-      `https://api.consumet.org/meta/anilist/${inputData}?page=1&perPage=100`
+      `https://consumet-api-drab.vercel.app/meta/anilist/${inputData}?page=1&perPage=100`
     );
     const { results } = getAnimeResult.data;
     loader_container.style.display = "none";
@@ -293,7 +292,7 @@ searchBarMobile.addEventListener("keydown", (e) => {
       card_layout.innerHTML = " ";
       searchAnimeData(searchValue);
       nav.classList.toggle("is-active");
-      nav_mobile.classList.toggle("nav-mobile-active");    
+      nav_mobile.classList.toggle("nav-mobile-active");
       searchBarMobile.value = "";
       btn_container.style.display = "none";
       document.querySelector(".main-container").style.display = "none";

@@ -3,7 +3,8 @@
 const next = document.getElementById("next");
 const prev = document.getElementById("prev");
 // const card_layout = document.getElementById("card_wrapper");
-const url = "https://api.consumet.org/meta/anilist/advanced-search?type=ANIME&format=TV";
+const url =
+  "https://consumet-api-drab.vercel.app/meta/anilist/advanced-search?type=ANIME&format=TV";
 let page = 1;
 
 const loader_container = document.querySelector(".loader-container");
@@ -21,9 +22,11 @@ const fetchAnime = async () => {
     loader_container.style.display = "none";
     loader.style.display = "none";
     btn_container.style.display = "flex";
-    document.querySelector(".footer").style.display = "block";    
+    document.querySelector(".footer").style.display = "block";
     results.forEach((anime) => {
-      const checkAnimeTitle = anime.title ? `${anime.title.english}` : `${anime.id.userPreferred}`;
+      const checkAnimeTitle = anime.title
+        ? `${anime.title.english}`
+        : `${anime.id.userPreferred}`;
       const card = document.createElement("div");
       card.classList.add("card");
       const card_image = document.createElement("div");

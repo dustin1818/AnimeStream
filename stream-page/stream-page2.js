@@ -54,7 +54,7 @@ const getEp = async () => {
   let episodeName = ep_id.id;
   console.log(episodeName);
   let serverData = await axios.get(
-    `https://api.consumet.org/meta/anilist/servers/${episodeName}`
+    `https://consumet-api-drab.vercel.app/meta/anilist/servers/${episodeName}`
   );
   let streamServerData = serverData.data;
   Vidstreaming.addEventListener("click", () => {
@@ -115,7 +115,7 @@ const getEp = async () => {
     });
   });
   const { data } = await axios.get(
-    `https://api.consumet.org/meta/anilist/watch/${episodeName}`
+    `https://consumet-api-drab.vercel.app/meta/anilist/watch/${episodeName}`
   );
   console.log(data);
   for (const iterator of data.sources) {
@@ -362,35 +362,35 @@ let EpName = text2.substring(
   0,
   text2.lastIndexOf("episode-") + "episode".length
 );
-console.log(EpPage)
+console.log(EpPage);
 if (EpPage < 2) {
   prevBtn.style.display = "none";
-}else{
+} else {
   prevBtn.style.display = "revert";
 }
 prevBtn.addEventListener("click", async (e) => {
   try {
     pageDecrementor -= Number(EpPage);
-      let pageString = pageDecrementor.toString();
-      const nextEpName = EpName + pageString;
-      console.log("-------------");
-      const nextEpData = await getPrevEpisode(nextEpName);
-      console.log(nextEpData);
-      localStorage.setItem("ep_id", JSON.stringify(nextEpData));
-      const storeNextEp = JSON.parse(localStorage.getItem("ep_id"));
-      console.log(storeNextEp);
-      document.getElementById("progress-bar").style.display = "block";
-      let progressBar = document.querySelector("#progress-bar .bar");
-      let width = 0;
-      let intervalId = setInterval(frame, 10);
-      function frame() {
-        if (width >= 100) {
-          clearInterval(intervalId);
-          window.location.reload();
-          getEp();
-        } else {
-          width++;
-          progressBar.style.width = width + "%";
+    let pageString = pageDecrementor.toString();
+    const nextEpName = EpName + pageString;
+    console.log("-------------");
+    const nextEpData = await getPrevEpisode(nextEpName);
+    console.log(nextEpData);
+    localStorage.setItem("ep_id", JSON.stringify(nextEpData));
+    const storeNextEp = JSON.parse(localStorage.getItem("ep_id"));
+    console.log(storeNextEp);
+    document.getElementById("progress-bar").style.display = "block";
+    let progressBar = document.querySelector("#progress-bar .bar");
+    let width = 0;
+    let intervalId = setInterval(frame, 10);
+    function frame() {
+      if (width >= 100) {
+        clearInterval(intervalId);
+        window.location.reload();
+        getEp();
+      } else {
+        width++;
+        progressBar.style.width = width + "%";
       }
     }
   } catch (e) {

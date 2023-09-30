@@ -36,7 +36,7 @@ const goBack = () => {
 const getAnimeInfo = async () => {
   try {
     const data = await axios.get(
-      `https://api.consumet.org/meta/anilist/info/${anime_info.id}?provider=gogoanime`
+      `https://consumet-api-drab.vercel.app/meta/anilist/info/${anime_info.id}?provider=gogoanime`
     );
     const anime_data = data.data;
     console.log(anime_data);
@@ -44,7 +44,7 @@ const getAnimeInfo = async () => {
     loader.style.display = "none";
     ep_header.style.display = "flex";
     hr.style.display = "flex";
-    document.querySelector(".footer").style.display = "block";    
+    document.querySelector(".footer").style.display = "block";
     const main_div = document.createElement("div");
     main_div.className = "main_div";
     //left-div
@@ -95,17 +95,17 @@ const getAnimeInfo = async () => {
       genre_subtext.classList.add("is-link");
       genre_subtext.append(genre);
       console.log(genre_subtext);
-      genre_subtext.addEventListener(("click"), () => {
+      genre_subtext.addEventListener("click", () => {
         // console.log(genre_subtext.innerText)
         // console.log(genre);
-        if(genre_subtext.innerText === genre){
-          console.log("hi")
-          console.log(genre_subtext.innerText)
+        if (genre_subtext.innerText === genre) {
+          console.log("hi");
+          console.log(genre_subtext.innerText);
           const genreType = genre_subtext.innerText;
           localStorage.setItem("genreValue", genreType);
           window.location.href = "../genre-page/genre.html";
         }
-      })
+      });
       category.append(genre_subtext);
     });
 
@@ -172,8 +172,8 @@ const getAnimeInfo = async () => {
             clearInterval(intervalId);
             let anime_ep = anime_data.episodes;
             const ep_id = anime_ep[i - 0];
-             localStorage.setItem("ep_id", JSON.stringify(ep_id));
-             localStorage.setItem("ep-list", JSON.stringify(anime_ep));
+            localStorage.setItem("ep_id", JSON.stringify(ep_id));
+            localStorage.setItem("ep-list", JSON.stringify(anime_ep));
             location.href = "../stream-page/stream-page.html";
           } else {
             width++;
