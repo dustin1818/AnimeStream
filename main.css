@@ -239,14 +239,14 @@ main {
 
 .swiper-slide.overlay.swiper-slide-active,
 .swiper-slide.overlay.swiper-slide {
-  height: 100vh;
+  height: auto;
 }
 
 .swiper-slide.overlay.swiper-slide-active img {
   position: relative;
   display: block;
   width: 100%;
-  height: 500px;
+  height: 78vh;
   object-fit: cover;
 }
 
@@ -268,6 +268,7 @@ main {
   z-index: 1;
   display: flex;
   align-items: center;
+  justify-content: center;
   width: 90%;
   flex-wrap: wrap;
 }
@@ -283,7 +284,8 @@ main {
 
 .imageLeftDiv img {
   border-radius: 9px;
-  object-fit: cover;
+  object-fit: cover !important;
+  height: 435px !important;
 }
 
 .carousel-leftDiv p {
@@ -302,8 +304,9 @@ main {
   text-align: left;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  margin-left: 40px;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
   gap: 20px;
 }
 
@@ -592,7 +595,7 @@ main {
   }
 }
 
-@media screen and (max-width: 450px) {
+@media screen and (max-width: 500px) {
   .title {
     font-size: 26.5px !important;
   }
@@ -631,6 +634,7 @@ main {
 
   .swiper-slide.overlay.swiper-slide-active img {
     height: 100%;
+    object-fit: cover;
   }
 
   .carousel-wrapper {
@@ -648,9 +652,14 @@ main {
     width: 100%;
   }
 
+  .button.is-link {
+    width: 82%;
+  }
+
   .carousel_text {
-    font-size: 22px;
+    font-size: 20px;
     font-weight: 600;
+    width: 92%;
   }
 
   .carousel_description {
@@ -667,7 +676,7 @@ main {
 
   .btn-container {
     justify-content: center;
-    margin-bottom: 30px;
+    margin: 30px 0;
   }
 
   .subheading {
