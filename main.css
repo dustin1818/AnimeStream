@@ -270,6 +270,7 @@ main {
   align-items: center;
   justify-content: center;
   width: 90%;
+  gap: 32px;
   flex-wrap: wrap;
 }
 
@@ -306,7 +307,6 @@ main {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 100%;
   gap: 20px;
 }
 
@@ -543,7 +543,7 @@ main {
 
 @media screen and (max-width: 1020px) {
   .navbar.is-link {
-    position: fixed;
+    position: relative !important;
     right: 0;
     z-index: 30;
     width: 100%;
@@ -625,7 +625,7 @@ main {
   }
 
   .carousel-container {
-    height: 84vh;
+    height: 100vh;
   }
 
   .swiper-slide.overlay.swiper-slide-active {
@@ -640,6 +640,7 @@ main {
   .carousel-wrapper {
     justify-content: center;
     gap: 20px;
+    top: 68px;
   }
 
   .carousel-leftDiv {

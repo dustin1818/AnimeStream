@@ -46,10 +46,10 @@ const swiper = new Swiper(".mySwiper", {
     el: ".swiper-scrollbar",
     hide: true,
   },
-  autoplay: {
-    delay: 3000,
-    disableOnInteraction: false,
-  },
+  // autoplay: {
+  //   delay: 3000,
+  //   disableOnInteraction: false,
+  // },
   on: {
     autoplayTimeLeft(s, time, progress) {
       progressCircle.style.setProperty("--progress", 1 - progress);

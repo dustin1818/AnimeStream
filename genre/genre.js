@@ -5,7 +5,6 @@ console.log(getGenre);
 
 const next = document.getElementById("next");
 const prev = document.getElementById("prev");
-// const card_layout = document.getElementById("card_wrapper");
 const url = `https://consumet-api-drab.vercel.app/meta/anilist/advanced-search?genres=["${getGenre}"]`;
 let page = 1;
 
@@ -88,9 +87,3 @@ prev.addEventListener("click", (e) => {
     fetchAnime();
   }
 });
-
-// const getCard = (anime) => {
-//   console.log(anime);
-//   localStorage.setItem("anime-info", JSON.stringify(anime));
-//   window.location.href = "../anime-details/anime-details.html";
-// };

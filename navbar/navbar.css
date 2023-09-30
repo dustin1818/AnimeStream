@@ -8,19 +8,18 @@
   scroll-behavior: smooth;
   text-decoration: none;
 }
-.title{
-  font-size: 30px ;
+.title {
+  font-size: 30px;
 }
 
-.navbar-brand{
-width: 100%;
-margin-right: 0 !important;
+.navbar-brand {
+  width: 100%;
+  margin-right: 0 !important;
 }
 
-.navbar-start{
+.navbar-start {
   margin-left: 15px;
 }
-
 
 #progress-bar {
   width: 100%;
@@ -82,7 +81,8 @@ margin-right: 0 !important;
   z-index: 1;
   width: 1rem !important;
   height: 1rem !important;
-}.group {
+}
+.group {
   display: flex;
   flex-direction: row;
   line-height: 28px;
@@ -162,39 +162,40 @@ margin-right: 0 !important;
 }
 
 @media screen and (max-width: 1020px) {
-    .navbar.is-link {
-      position: fixed;
-      right: 0;
-      z-index: 30;
-      width: 100%;
-    }
-  
+  .navbar.is-link {
+    position: fixed;
+    right: 0;
+    z-index: 30;
+    width: 100%;
   }
-  
-  @media screen and (max-width: 450px) {
-    .title{
-      font-size: 26.5px !important;
-    }
+}
 
-    .nav-mobile-active {
-      gap: 25px;
-    }
-
-    .navbar-item p, .button.is-link strong, .nav-mobile-active a {
-      font-size: 24px;
-      font-weight: 600 !important;
-    }
-
-    .button.is-light{
-      height: 49px;
-    }
-
-    .group{
-      width: 90%;
-    }
-
-    .input, .textarea{
-      height: 48px !important;
-    }
+@media screen and (max-width: 450px) {
+  .title {
+    font-size: 26.5px !important;
   }
-  
+
+  .nav-mobile-active {
+    gap: 25px;
+  }
+
+  .navbar-item p,
+  .button.is-link strong,
+  .nav-mobile-active a {
+    font-size: 24px;
+    font-weight: 600 !important;
+  }
+
+  .button.is-light {
+    height: 49px;
+  }
+
+  .group {
+    width: 90%;
+  }
+
+  .input,
+  .textarea {
+    height: 48px !important;
+  }
+}
