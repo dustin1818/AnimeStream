@@ -2,7 +2,7 @@
 
 const next = document.getElementById("next");
 const prev = document.getElementById("prev");
-const url = "https://consumet-api-drab.vercel.app/meta/anilist/trending";
+const url = "https://api.consumet.org/meta/anilist/trending";
 let page = 1;
 
 const loader_container = document.querySelector(".loader-container");

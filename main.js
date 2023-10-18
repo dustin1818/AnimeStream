@@ -6,7 +6,7 @@ const scrollBtn = document.getElementById("scrollToTop");
 scrollBtn.style.display = "none";
 const card_layout = document.getElementById("card_wrapper");
 //api
-const url = "https://consumet-api-drab.vercel.app/meta/anilist/trending";
+const url = "https://api.consumet.org/meta/anilist/trending";
 let page = 1;
 //navbar
 const nav = document.getElementById("nav");
@@ -300,7 +300,7 @@ const getCard = (anime) => {
 const searchAnimeData = async (inputData) => {
   try {
     const getAnimeResult = await axios.get(
-      `https://consumet-api-drab.vercel.app/meta/anilist/${inputData}?page=1&perPage=100`
+      `https://api.consumet.org/meta/anilist/${inputData}?page=1&perPage=100`
     );
     const { results } = getAnimeResult.data;
     loader_container.style.display = "none";

@@ -36,7 +36,7 @@ const goBack = () => {
 const getAnimeInfo = async () => {
   try {
     const data = await axios.get(
-      `https://consumet-api-drab.vercel.app/meta/anilist/info/${anime_info.id}?provider=gogoanime`
+      `https://api.consumet.org/meta/anilist/info/${anime_info.id}?provider=gogoanime`
     );
     const anime_data = data.data;
     console.log(anime_data);

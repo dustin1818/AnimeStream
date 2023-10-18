@@ -115,7 +115,7 @@ const getEp = async () => {
     });
   });
   const { data } = await axios.get(
-    `https://consumet-api-drab.vercel.app/meta/anilist/watch/${episodeName}`
+    `https://api.consumet.org/meta/anilist/watch/${episodeName}`
   );
   console.log(data);
   for (const iterator of data.sources) {

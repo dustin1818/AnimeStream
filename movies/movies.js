@@ -4,7 +4,7 @@ const next = document.getElementById("next");
 const prev = document.getElementById("prev");
 // const card_layout = document.getElementById("card_wrapper");
 const url =
-  "https://consumet-api-drab.vercel.app/meta/anilist/advanced-search?type=ANIME&format=MOVIE";
+  "https://api.consumet.org/meta/anilist/advanced-search?type=ANIME&format=MOVIE";
 let page = 1;
 const loader_container = document.querySelector(".loader-container");
 const loader = document.querySelector(".three-body");
